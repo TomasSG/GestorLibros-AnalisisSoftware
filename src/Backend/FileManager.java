@@ -68,7 +68,7 @@ public class FileManager {
 			
 			// De la linea obtenemos los valores que buscamos
 			String nombre = campos[0];
-			String contraseniaHash = campos[1];
+			byte[] contraseniaHash = campos[1];
 			
 			// Creamos el objeto Usuario y lo añadimos al vector
 			Usuario usuario = new Usuario(nombre, contraseniaHash);

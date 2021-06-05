@@ -3,9 +3,9 @@ package Backend;
 public class Usuario implements Comparable<Usuario>{
 	
 	private String nombre;
-	private String contraseniaHash;
+	private byte[] contraseniaHash;
 	
-	public Usuario(String nombre, String contraseniaHash) {
+	public Usuario(String nombre, byte[] contraseniaHash) {
 		this.nombre = nombre;
 		this.contraseniaHash = contraseniaHash;
 	}
@@ -18,11 +18,11 @@ public class Usuario implements Comparable<Usuario>{
 		this.nombre = nombre;
 	}
 
-	public String getContraseniaHash() {
+	public byte[] getContraseniaHash() {
 		return contraseniaHash;
 	}
 
-	public void setContraseniaHash(String contraseniaHash) {
+	public void setContraseniaHash(byte[] contraseniaHash) {
 		this.contraseniaHash = contraseniaHash;
 	}
 
@@ -30,5 +30,10 @@ public class Usuario implements Comparable<Usuario>{
 	public int compareTo(Usuario o) {
 		return this.nombre.compareTo(o.getNombre());
 	}
+	
+	@Override
+    public boolean equals(Object u) {
+        return this==u || (u instanceof Usuario && this.nombre.equals(((Usuario)u).nombre));
+    }
 
 }

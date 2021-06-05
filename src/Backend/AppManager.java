@@ -152,7 +152,7 @@ public class AppManager {
 		return this.libros;
 	}
 
-	public String EncriptarContrasenia(String contrasenia) {
+	public byte[] EncriptarContrasenia(String contrasenia) {
 		return this.encriptador.encriptarSHA256(contrasenia);
 	}
 
