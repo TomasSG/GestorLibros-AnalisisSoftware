@@ -14,29 +14,19 @@ public class AppManager {
 	}
 
 	/*
-	 * Carga la BD al vector 
+	 * Carga la BD al vector.
 	 */
-	
-	public void iniciarAplicacion() {
-		// Leemos de la BD los registros existentes
-		libros = fileManager.leerArchivo(Constantes.PATH_BASE_DATOS_LIBROS);
 
-		try {
-			PrintStream salida = new PrintStream(PATH_BASE_DATOS_LIBROS);
-			n = vector.size();
-			for (i = 0; i < n; i++)
-				imprimirEnArchivo.funcion(vector.get(i), salida);
-			salida.close();
-		} catch (FileNotFoundException e) {
-		}
+	public void iniciarAplicacion() throws FileNotFoundException {
+		libros = fileManager.leerArchivo(Constantes.PATH_BASE_DATOS_LIBROS);
 	}
-	
+
 	/*
-	 * Guarda el vector en el archivo
+	 * Guarda el vector en la BD.
 	 */
-	
-	public void finalizarAplicacion() {
-		
+
+	public void finalizarAplicacion() throws FileNotFoundException {
+		fileManager.escribirArchivo(Constantes.PATH_BASE_DATOS_LIBROS, this.libros);
 	}
 
 	/*
@@ -123,36 +113,34 @@ public class AppManager {
 
 		return true;
 	}
-	
+
 	/*
 	 * Elimina el registro de la colección.
 	 */
-	
+
 	public void eliminarLibro(String isbn) {
 		this.libros.remove(new Libro(isbn));
 	}
-	
+
 	/*
-	 * Ordena el vector.
-	 * Si esta vacío no hace nada.
-	 * Si tiene elementos los ordena. 
+	 * Ordena el vector. Si esta vacío no hace nada. Si tiene elementos los ordena.
 	 */
-	
+
 	public void ordenarLibros() {
 
 		// Verificamos si esta vacio el vector
-		if(this.libros.isEmpty()) {
+		if (this.libros.isEmpty()) {
 			return;
 		} else {
 			Collections.sort(this.libros);
 		}
 	}
-	
+
 	/*
 	 * Retornamos el vector con los libros para que la GUI los muestre.
 	 */
-	
-	public Vector<Libro> listarLibros(){
+
+	public Vector<Libro> listarLibros() {
 		return this.libros;
 	}
 }

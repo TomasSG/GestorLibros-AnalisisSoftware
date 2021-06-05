@@ -2,6 +2,7 @@ package Backend;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -36,8 +37,23 @@ public class FileManager {
 		return libros;
 	}
 	
-	public void escribirArchivo(String path) {
+	public void escribirArchivo(String path, Vector<Libro> libros) throws FileNotFoundException {
+		PrintStream salida = new PrintStream(path);
 		
+		for(Libro libro : libros) {
+			escribirRegistro(libro, salida);
+		}
+		
+		salida.close();
+	}
+
+	private void escribirRegistro(Libro libro, PrintStream salida) {
+		salida.print(libro.getIsbn() + Constantes.TABULACION);
+        salida.print(libro.getTitulo() + Constantes.TABULACION);
+        salida.print(libro.getAutor() + Constantes.TABULACION);
+        salida.print(libro.getEditorial() + Constantes.TABULACION);
+        salida.print(libro.getEdicion() + Constantes.TABULACION);
+        salida.print(libro.getAnioPublicacion() + Constantes.NUEVA_LINEA);		
 	}
 
 }
