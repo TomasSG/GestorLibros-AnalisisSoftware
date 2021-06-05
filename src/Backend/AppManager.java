@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class Main {
+public class AppManager {
 
     public static Scanner teclado = new Scanner(System.in);
     public static PrintStream out = System.out;
