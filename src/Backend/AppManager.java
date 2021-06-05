@@ -8,12 +8,16 @@ public class AppManager {
 
     public static Scanner teclado = new Scanner(System.in);
     public static PrintStream out = System.out;
+    final private static String PATH_BASE_DATOS_LIBROS = "libros.tsv";
 
+    /* ESTOS MÉTODOS LO VAMOS A PODER SACAR PORQUE SON PARA CONSOLA*/
+    
     public static void pausar(String mensage) {
         out.print(mensage + "\nPresione <ENTER> para continuar . . . ");
         teclado.nextLine();
         out.println();
     }
+    
 
     public static String leer_cadena(String mensaje) {
         out.print(mensaje + ": ");
@@ -29,8 +33,6 @@ public class AppManager {
         }
     }
 
-    public static String ruta = "libros.tsv";
-
     public static void main(String[] args) {
 
         Funcion<Libro> imprimir = new Funcion<Libro>() {
@@ -41,6 +43,7 @@ public class AppManager {
                 contador[0]++;
             }
         };
+        
         Funcion<Libro> imprimirEnArchivo = new Funcion<Libro>() {
             @Override
             public void funcion(Libro libro, Object parametros) {
@@ -53,6 +56,7 @@ public class AppManager {
                 archivo.print(libro.getAnno_de_publicacion() + "\n");
             }
         };
+        
         if(!System.getProperties().get("os.name").equals("Linux") && System.console()!=null)
             try {
                 out = new PrintStream(System.out, true, "CP850");
@@ -65,7 +69,7 @@ public class AppManager {
         int opcion, subopcion;
         String[] campos;
         try {
-            Scanner entrada = new Scanner(new FileReader(ruta));
+            Scanner entrada = new Scanner(new FileReader(PATH_BASE_DATOS_LIBROS));
             while (entrada.hasNextLine()) {
                 campos = entrada.nextLine().split("\t");
                 libro = new Libro();
@@ -174,7 +178,7 @@ public class AppManager {
                 pausar("");
         } while (opcion!=7);
         try {
-            PrintStream salida = new PrintStream(ruta);
+            PrintStream salida = new PrintStream(PATH_BASE_DATOS_LIBROS);
             n = vector.size();
             for (i=0; i<n; i++)
                 imprimirEnArchivo.funcion(vector.get(i), salida);
@@ -182,86 +186,3 @@ public class AppManager {
         } catch (FileNotFoundException e) {}
     }
 }
-
-interface Funcion<T extends Comparable<T>> {
-    void funcion(T dato, Object parametros);
-}
-
-class Libro implements Comparable<Libro> {
-
-    private String ISBN;
-    private String titulo;
-    private String autor;
-    private String editorial;
-    private int edicion;
-    private int anno_de_publicacion;
-
-    @Override
-    public boolean equals(Object libro) {
-        return this==libro || (libro instanceof Libro && ISBN.equals(((Libro)libro).ISBN));
-    }
-
-    @Override
-    public int compareTo(Libro libro) {
-        return ISBN.compareTo(libro.ISBN);
-    }
-    
-    @Override
-    public String toString() {
-        return
-            "ISBN               : " + ISBN + "\n" +
-            "titulo             : " + titulo + "\n" +
-            "autor              : " + autor + "\n" +
-            "editorial          : " + editorial + "\n" +
-            "edicion            : " + edicion + "\n" +
-            "anno de publicacion: " + anno_de_publicacion + "\n";
-    }
-
-    public String getISBN() {
-        return ISBN;
-    }
-    
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-    
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-    
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getEditorial() {
-        return editorial;
-    }
-    
-    public void setEditorial(String editorial) {
-        this.editorial = editorial;
-    }
-
-    public int getEdicion() {
-        return edicion;
-    }
-    
-    public void setEdicion(int edicion) {
-        this.edicion = edicion;
-    }
-
-    public int getAnno_de_publicacion() {
-        return anno_de_publicacion;
-    }
-    
-    public void setAnno_de_publicacion(int anno_de_publicacion) {
-        this.anno_de_publicacion = anno_de_publicacion;
-    }
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
