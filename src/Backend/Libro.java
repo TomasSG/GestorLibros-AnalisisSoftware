@@ -2,23 +2,44 @@ package Backend;
 
 class Libro implements Comparable<Libro> {
 
-    private String ISBN;
+    private String isbn;
     private String titulo;
     private String autor;
     private String editorial;
     private int edicion;
-    private int anno_de_publicacion;
+    private int anioPublicacion;
+    
+   /* SECCIÓN CONSTRUCTORES*/
+    
+    public Libro() {
+    	this.isbn = null;
+    	this.titulo = null;
+    	this.autor = null;
+    	this.editorial = null;
+    	this.edicion = 0;
+    	this.anioPublicacion = 0;
+    }
+    
+    public Libro(String isbn, String titulo, String autor, String editorial, int edicion, int anioPublicacion) {
+    	this.isbn = isbn;
+    	this.titulo = titulo;
+    	this.autor = autor;
+    	this.editorial = editorial;
+    	this.edicion = edicion;
+    	this.anioPublicacion = anioPublicacion;
+    }
+    
 
     /* MÉTODOS POR IMPLEMENTAR COMPARABLE */
     
     @Override
     public boolean equals(Object libro) {
-        return this==libro || (libro instanceof Libro && this.ISBN.equals(((Libro)libro).ISBN));
+        return this==libro || (libro instanceof Libro && this.isbn.equals(((Libro)libro).isbn));
     }
 
     @Override
     public int compareTo(Libro libro) {
-        return this.ISBN.compareTo(libro.ISBN);
+        return this.isbn.compareTo(libro.isbn);
     }
     
    /* PARA IMPRIMIR POR CONSOLA*/
@@ -26,29 +47,29 @@ class Libro implements Comparable<Libro> {
     @Override
     public String toString() {
         return
-            "ISBN               : " + this.ISBN + "\n" +
+            "isbn               : " + this.isbn + "\n" +
             "titulo             : " + this.titulo + "\n" +
             "autor              : " + this.autor + "\n" +
             "editorial          : " + this.editorial + "\n" +
             "edicion            : " + this.edicion + "\n" +
-            "anio de publicacion: " + this.anno_de_publicacion + "\n";
+            "anio de publicacion: " + this.anioPublicacion + "\n";
     }
 
     /* SECCIÓN GETTERS Y SETTERS */
     
-    public String getISBN() {
-        return this.ISBN;
-    }
+    public String getIsbn() {
+		return this.isbn;
+	}
     
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
 
     public String getTitulo() {
         return this.titulo;
     }
     
-    public void setTitulo(String titulo) {
+	public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
@@ -75,12 +96,12 @@ class Libro implements Comparable<Libro> {
     public void setEdicion(int edicion) {
         this.edicion = edicion;
     }
-
-    public int getAnno_de_publicacion() {
-        return this.anno_de_publicacion;
-    }
-    
-    public void setAnno_de_publicacion(int anno_de_publicacion) {
-        this.anno_de_publicacion = anno_de_publicacion;
-    }
+	public int getAnioPublicacion() {
+		return this.anioPublicacion;
+	}
+	
+	public void setAnioPublicacion(int anioPublicacion) {
+		this.anioPublicacion = anioPublicacion;
+	}
+   
 }    
