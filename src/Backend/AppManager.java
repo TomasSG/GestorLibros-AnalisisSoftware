@@ -3,30 +3,38 @@ package Backend;
 import java.io.*;
 import java.util.*;
 
+import javax.swing.text.PlainDocument;
+
 public class AppManager {
 
 	private Vector<Libro> libros;
-	FileManager fileManager;
+	private Vector<Usuario> usuarios;
+	private FileManager fileManager;
+	private Encriptador encriptador;
 
 	public AppManager() {
-		libros = new Vector<Libro>();
+		this.libros = new Vector<Libro>();
+		this.usuarios = new Vector<Usuario>();
+		this.encriptador = new Encriptador();
 		this.fileManager = new FileManager();
 	}
 
 	/*
-	 * Carga la BD al vector.
+	 * Carga las BD en los vectores.
 	 */
 
 	public void iniciarAplicacion() throws FileNotFoundException {
-		libros = fileManager.leerArchivo(Constantes.PATH_BASE_DATOS_LIBROS);
+		libros = fileManager.leerArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS);
+		usuarios = fileManager.leerArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS);
 	}
 
 	/*
-	 * Guarda el vector en la BD.
+	 * Guarda los vectores en las BD.
 	 */
 
 	public void finalizarAplicacion() throws FileNotFoundException {
-		fileManager.escribirArchivo(Constantes.PATH_BASE_DATOS_LIBROS, this.libros);
+		fileManager.escribirArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS, this.libros);
+		fileManager.escribirArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS, usuarios);
 	}
 
 	/*
@@ -142,5 +150,38 @@ public class AppManager {
 
 	public Vector<Libro> listarLibros() {
 		return this.libros;
+	}
+
+	public String EncriptarContrasenia(String contrasenia) {
+		return this.encriptador.encriptarSHA256(contrasenia);
+	}
+
+	public boolean IniciarSesion(Usuario usuario) {
+
+		// Si no hay registros es que no esta registrado
+		if (usuarios.isEmpty()) {
+			return false;
+		}
+
+		int indice = usuarios.indexOf(usuario);
+
+		// Si no existe en el registro el índice es menor a 0
+		if (indice < 0) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean RegistrarUsuario(Usuario usuario) {
+		int indice = usuarios.indexOf(usuario);
+		
+		// Si existe en el registro el índice es por lo menos 0
+		if (indice >= 0) {
+			return false;
+		}
+
+		usuarios.add(usuario);
+		return true;
 	}
 }

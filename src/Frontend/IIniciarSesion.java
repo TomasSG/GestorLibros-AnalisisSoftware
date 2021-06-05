@@ -1,6 +1,6 @@
 package Frontend;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.Box;
@@ -19,20 +19,17 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
 public class IIniciarSesion extends JFrame {
 
 	private JPanel contentPane;
 	private GridBagLayout layout;
 	private GridBagConstraints gbc;
-	
-	/* CONSTANTES */
-	
-	private static final int WIDTH_LABEL = 130;
-	private static final int HEIGHT_LABEL = 30;
-	
-	private static final int WIDTH_TEXTFIELD = 100;
-	private static final int HEIGHT_TEXTFIELD = 60;
 
 	/**
 	 * Launch the application.
@@ -117,6 +114,15 @@ public class IIniciarSesion extends JFrame {
 		
 		anadirObjeto(btnIniciarSesion, contentPane, layout, gbc, 0, 6, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 		anadirObjeto(btnRegistrarse, contentPane, layout, gbc, 2, 6, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+		
+		btnIniciarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("BOTON PRESIONADO");
+				
+			}
+		});
 	}
 
 	private void anadirObjeto(Component componente, Container container, GridBagLayout layout, GridBagConstraints gbc,
@@ -131,7 +137,6 @@ public class IIniciarSesion extends JFrame {
 		gbc.gridwidth = gridwidth;
 		gbc.gridheight = gridheight;
 		
-		//gbc.weighty = .3;
 		
 		layout.setConstraints(componente, gbc);
 		container.add(componente);
