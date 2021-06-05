@@ -15,7 +15,7 @@ public class AppManager {
 		libros = new Vector<Libro>();
 	}
 	
-	public static void main(String[] args) {
+	public void iniciarAplicacion() {
 
 		Funcion<Libro> imprimirEnArchivo = new Funcion<Libro>() {
 			@Override
@@ -30,7 +30,7 @@ public class AppManager {
 			}
 		};
 
-		Vector<Libro> libros = new Vector<Libro>();
+		
 		int i, n;
 		Libro dato = null, libro;
 		int[] contador = { 0 };
@@ -50,16 +50,15 @@ public class AppManager {
 			out.println("5.- Ordenar registros");
 			out.println("6.- Listar registros");
 			out.println("7.- Salir");
-			do {
-				opcion = leer_entero("Seleccione una opci\u00F3n");
-				if (opcion < 1 || opcion > 7)
-					out.println("Opci\u00F3nn no v\u00E1lida.");
-			} while (opcion < 1 || opcion > 7);
-			out.println();
+			
+			
+			// Verificación de que el vector no este vacío
 			if (vector.isEmpty() && opcion != 1 && opcion != 7) {
 				pausar("No hay registros.\n");
 				continue;
 			}
+			
+			// Verificacion de que no exista el libro
 			if (opcion < 5) {
 				libro.setISBN(leer_cadena("Ingrese el ISBN del libro"));
 				i = vector.indexOf(libro);
@@ -69,22 +68,14 @@ public class AppManager {
 					imprimir.funcion(dato, contador);
 				}
 			}
+			
+			
 			if (opcion == 1 && dato != null)
 				out.println("El registro ya existe.");
 			else if (opcion >= 2 && opcion <= 4 && dato == null)
 				out.println("\nRegistro no encontrado.");
 			else
 				switch (opcion) {
-				case 1:
-					libro.setTitulo(leer_cadena("Ingrese el titulo"));
-					libro.setAutor(leer_cadena("Ingrese el autor"));
-					libro.setEditorial(leer_cadena("Ingrese el editorial"));
-					libro.setEdicion(leer_entero("Ingrese el edicion"));
-					libro.setAnno_de_publicacion(leer_entero("Ingrese el anno de publicacion"));
-					vector.add(libro);
-					libro = new Libro();
-					out.println("\nRegistro agregado correctamente.");
-					break;
 				case 3:
 					out.println("Men\u00FA de modificaci\u00F3n de campos");
 					out.println("1.- titulo");
@@ -142,6 +133,50 @@ public class AppManager {
 				imprimirEnArchivo.funcion(vector.get(i), salida);
 			salida.close();
 		} catch (FileNotFoundException e) {
+		}
+	}
+	
+	/*
+	 * Genera un nuevo registro con la información del libro.
+	 * Si se genero el registro retorna true.
+	 * Si el libro ya existe retorna false.
+	 */
+	
+	public boolean altaLibro(String isbn, String titulo, String autor, String editorial, int edicion, int anioPublicacion) {
+		
+		Libro libro = new Libro(isbn);
+		
+		// Verificamos que no exista el libro
+		if(this.libros.indexOf(libro) >= 0) {
+			return false;
+		}
+		
+		libro.setTitulo(titulo);
+		libro.setAutor(autor);
+		libro.setEditorial(editorial);
+		libro.setEdicion(edicion);
+		libro.setAnioPublicacion(anioPublicacion);
+		
+		this.libros.add(libro);
+		return true;
+	}
+	
+	/*
+	 * Busca el libro consultado usando el ISBN.
+	 * Si existe el libro lo retorna.
+	 * Si no existe el libro retorna null.
+	 */
+	
+	public Libro consultarLibro(String isbn) {
+		
+		// Buscamos el libro usando el ISBN.
+		int indice = this.libros.indexOf(new Libro(isbn));
+		
+		// Verificamos la existencia del libro.
+		if(indice <= 0) {
+			return null;
+		} else {
+			return this.libros.get(indice);
 		}
 	}
 }

@@ -9,7 +9,7 @@ class Libro implements Comparable<Libro> {
     private int edicion;
     private int anioPublicacion;
     
-   /* SECCIÓN CONSTRUCTORES*/
+   /* SECCIÓN CONSTRUCTORES */
     
     public Libro() {
     	this.isbn = null;
@@ -27,6 +27,15 @@ class Libro implements Comparable<Libro> {
     	this.editorial = editorial;
     	this.edicion = edicion;
     	this.anioPublicacion = anioPublicacion;
+    }
+    
+    public Libro(String isbn) {
+    	this.isbn = isbn;
+    	this.titulo = null;
+    	this.autor = null;
+    	this.editorial = null;
+    	this.edicion = 0;
+    	this.anioPublicacion = 0;
     }
     
 
