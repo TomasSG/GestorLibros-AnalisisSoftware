@@ -5,36 +5,30 @@ import java.util.*;
 
 import javax.swing.text.PlainDocument;
 
-public class AppManager {
+public class GestorLibros {
 
 	private Vector<Libro> libros;
-	private Vector<Usuario> usuarios;
 	private FileManager fileManager;
-	private Encriptador encriptador;
 
-	public AppManager() {
+	public GestorLibros() {
 		this.libros = new Vector<Libro>();
-		this.usuarios = new Vector<Usuario>();
-		this.encriptador = new Encriptador();
 		this.fileManager = new FileManager();
 	}
 
 	/*
-	 * Carga las BD en los vectores.
+	 * Carga los registros a memoria.
 	 */
 
-	public void iniciarAplicacion() throws FileNotFoundException {
+	public void iniciar() throws FileNotFoundException {
 		libros = fileManager.leerArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS);
-		usuarios = fileManager.leerArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS);
 	}
 
 	/*
 	 * Guarda los vectores en las BD.
 	 */
 
-	public void finalizarAplicacion() throws FileNotFoundException {
-		fileManager.escribirArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS, this.libros);
-		fileManager.escribirArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS, usuarios);
+	public void finalizar() throws FileNotFoundException {
+		fileManager.escribirArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS, libros);
 	}
 
 	/*
@@ -150,38 +144,5 @@ public class AppManager {
 
 	public Vector<Libro> listarLibros() {
 		return this.libros;
-	}
-
-	public byte[] EncriptarContrasenia(String contrasenia) {
-		return this.encriptador.encriptarSHA256(contrasenia);
-	}
-
-	public boolean IniciarSesion(Usuario usuario) {
-
-		// Si no hay registros es que no esta registrado
-		if (usuarios.isEmpty()) {
-			return false;
-		}
-
-		int indice = usuarios.indexOf(usuario);
-
-		// Si no existe en el registro el índice es menor a 0
-		if (indice < 0) {
-			return false;
-		}
-
-		return true;
-	}
-
-	public boolean RegistrarUsuario(Usuario usuario) {
-		int indice = usuarios.indexOf(usuario);
-		
-		// Si existe en el registro el índice es por lo menos 0
-		if (indice >= 0) {
-			return false;
-		}
-
-		usuarios.add(usuario);
-		return true;
 	}
 }

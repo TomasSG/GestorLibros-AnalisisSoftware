@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Backend.AppManager;
+import Backend.GestorLibros;
 import Backend.Usuario;
 
 public class IRegistrarUsuario extends JFrame {
@@ -36,13 +36,13 @@ public class IRegistrarUsuario extends JFrame {
 	private JPasswordField txtContrasenia;
 	private JPasswordField txtContraseniaRepetida;
 
-	private AppManager app;
+	private GestorLibros app;
 	private IIniciarSesion padre;
 
 	/**
 	 * Create the frame.
 	 */
-	public IRegistrarUsuario(AppManager app, IIniciarSesion padre) {
+	public IRegistrarUsuario(GestorLibros app, IIniciarSesion padre) {
 
 		this.app = app;
 		this.padre = padre;

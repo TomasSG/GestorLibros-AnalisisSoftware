@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
-import Backend.AppManager;
+import Backend.GestorLibros;
 import Backend.Usuario;
 
 import java.awt.Color;
@@ -37,7 +37,7 @@ public class IIniciarSesion extends JFrame {
 	private JPanel contentPane;
 	private GridBagLayout layout;
 	private GridBagConstraints gbc;
-	private AppManager app;
+	private GestorLibros app;
 	
 	private JTextField txtNombreUsuario;
 	private JPasswordField txtContrasenia;
@@ -63,7 +63,7 @@ public class IIniciarSesion extends JFrame {
 	 */
 	public IIniciarSesion() {
 		
-		app = new AppManager();
+		app = new GestorLibros();
 		try {
 			app.iniciarAplicacion();
 		} catch (FileNotFoundException e1) {
