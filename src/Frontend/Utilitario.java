@@ -22,6 +22,7 @@ public class Utilitario {
 	public static final String MSJ_NOMBRE_INVALIDO = "Nombre de usuario Inválido";
 	public static final String MSJ_EXISTE_USUARIO = "Ya existe el usuario ingresado";
 	public static final String MSJ_NO_EXISTE_USUARIO = "No existe el usuario ingresado";
+	public static final String MSJ_ERROR_BD = "No se logro acceder a la base datos";
 	
 	// Msjs de éxito
 	public static final String MSJ_USUARIO_REGISTRADO = "Usuario registrado exitosamente!";

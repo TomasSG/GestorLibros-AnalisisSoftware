@@ -10,13 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
-import Backend.GestorLibros;
+
 import Backend.GestorUsuarios;
-import Backend.Usuario;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -30,8 +27,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
 
 public class IIniciarSesion extends JFrame {
 
@@ -69,7 +64,7 @@ public class IIniciarSesion extends JFrame {
 		try {
 			gu.iniciar();
 		} catch (FileNotFoundException e1) {
-			Utilitario.mensajeError("No se logro acceder a la base datos");
+			Utilitario.mensajeError(Utilitario.MSJ_ERROR_BD);
 			this.dispose();
 		}
 		
@@ -162,7 +157,7 @@ public class IIniciarSesion extends JFrame {
 					try {
 						gu.finalizar();
 					} catch (FileNotFoundException e) {
-						Utilitario.mensajeError("No se logro acceder a la base datos");
+						Utilitario.mensajeError(Utilitario.MSJ_ERROR_BD);
 						we.getWindow().dispose();
 					}
 					we.getWindow().dispose();
