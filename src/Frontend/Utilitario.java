@@ -9,13 +9,24 @@ import javax.swing.JOptionPane;
 
 public class Utilitario {
 	
-	private static final String TITULO_CERRAR_VENTANA = "Cerrar Ventana";
-	private static final String MSJ_CERRAR_VENTANA = "¿Deseas cerrar la ventana?";
+	// Titulos ventanas
+	public static final String TITULO_CERRAR_VENTANA = "Cerrar Ventana";
+	public static final String TITULO_ERROR = "Error";
+	public static final String TITULO_EXITO = "Operación Completada Exitosamente";
 	
-	private static final String TITULO_ERROR = "Error";
-	private static final String TITULO_EXITO = "Operación Completada Exitosamente";
+	// Msj de errores
+	public static final String MSJ_CERRAR_VENTANA = "¿Deseas cerrar la ventana?";
+	public static final String MSJ_CONTRASENIA_INVALIDA = "Contraseña Inválida";
+	public static final String MSJ_NO_COINCIDEN_CONTRASENIAS = "No coinciden las contraseñas ingresadas";
+	public static final String MSJ_CONTRASENIA_ERRONEA = "Contraseña erronea";
+	public static final String MSJ_NOMBRE_INVALIDO = "Nombre de usuario Inválido";
+	public static final String MSJ_EXISTE_USUARIO = "Ya existe el usuario ingresado";
+	public static final String MSJ_NO_EXISTE_USUARIO = "No existe el usuario ingresado";
 	
-
+	// Msjs de éxito
+	public static final String MSJ_USUARIO_REGISTRADO = "Usuario registrado exitosamente!";
+	
+	
 	public static void anadirObjeto(Component componente, Container container, GridBagLayout layout, GridBagConstraints gbc,
 			int gridx, int gridy, int gridwidth, int gridheight, int anchor, int fill) {
 		

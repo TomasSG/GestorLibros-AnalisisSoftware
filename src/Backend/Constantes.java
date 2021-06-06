@@ -13,4 +13,8 @@ public class Constantes {
 	
 	// CONSTANTES CIFRAD
 	final public static int SALT = 512;
+	final public static int ITERACIONES = 65536;
+	final public static int LARGO_LLAVE = 512;
+	final public static String ALGORITMO = "PBKDF2WithHmacSHA512";
+
 }

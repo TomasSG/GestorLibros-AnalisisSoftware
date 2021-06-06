@@ -170,17 +170,17 @@ public class IRegistrarUsuario extends JFrame {
 
 		// Verificaciones sobre los campos de entrada
 		if (!Utilitario.esContraseniaCorrecto(contrasenia) || !Utilitario.esContraseniaCorrecto(contraseniaRepetida)) {
-			Utilitario.mensajeError("Contraseña Inválida");
+			Utilitario.mensajeError(Utilitario.MSJ_CONTRASENIA_INVALIDA);
 			return;
 		}
 
 		if (!Utilitario.esNombreCorrecto(txtNombreUsuario.getText())) {
-			Utilitario.mensajeError("Nombre de usuario Inválido");
+			Utilitario.mensajeError(Utilitario.MSJ_NOMBRE_INVALIDO);
 			return;
 		}
 
 		if (!contrasenia.equals(contraseniaRepetida)) {
-			Utilitario.mensajeError("No coinciden las contraseñas ingresadas");
+			Utilitario.mensajeError(Utilitario.MSJ_NO_COINCIDEN_CONTRASENIAS);
 			return;
 		}
 
@@ -191,10 +191,10 @@ public class IRegistrarUsuario extends JFrame {
 		
 		// Validaciones sobre el usuario
 		if (app.registrarUsuario(usuario) == false) {
-			Utilitario.mensajeError("Ya existe el usuario ingresado");
+			Utilitario.mensajeError(Utilitario.MSJ_EXISTE_USUARIO);
 			return;
 		} else {
-			Utilitario.mensajeExito("Usuario registrado exitosamente!");
+			Utilitario.mensajeExito(Utilitario.MSJ_USUARIO_REGISTRADO);
 			return;
 		}
 

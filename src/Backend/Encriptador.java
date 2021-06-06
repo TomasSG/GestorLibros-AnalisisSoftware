@@ -16,32 +16,18 @@ import javax.crypto.spec.PBEKeySpec;
 public class Encriptador {
 
 	private static final SecureRandom RAND = new SecureRandom();
-	private static final int ITERACIONES = 65536;
-	private static final int LARGO_LLAVE = 512;
-	private static final String ALGORITMO = "PBKDF2WithHmacSHA512";
-
-	public static void main(String[] args) {
-
-		Encriptador e = new Encriptador();
-		String salt = e.generarSalt(Constantes.SALT).get();
-		String c1 = e.hashContrasenia("a", salt).get();
-		String c2 = e.hashContrasenia("a", salt).get();
-
-		System.out.println(c1);
-		System.out.println(c2);
-	}
-
+	
 	private Optional<String> hashContrasenia(String contrasenia, String salt) {
 
 		char[] chars = contrasenia.toCharArray();
 		byte[] bytes = salt.getBytes();
-		PBEKeySpec spec = new PBEKeySpec(chars, bytes, ITERACIONES, LARGO_LLAVE);
+		PBEKeySpec spec = new PBEKeySpec(chars, bytes, Constantes.ITERACIONES, Constantes.LARGO_LLAVE);
 
 		// Limpiar el vector con la contraseña
 		Arrays.fill(chars, Character.MIN_VALUE);
 
 		try {
-			SecretKeyFactory fac = SecretKeyFactory.getInstance(ALGORITMO);
+			SecretKeyFactory fac = SecretKeyFactory.getInstance(Constantes.ALGORITMO);
 			byte[] contraseniaSegura = fac.generateSecret(spec).getEncoded();
 			return Optional.of(Base64.getEncoder().encodeToString(contraseniaSegura));
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {

@@ -178,24 +178,24 @@ public class IIniciarSesion extends JFrame {
 		
 		// Validaciones sobre los campos de entrada
 		if(!Utilitario.esContraseniaCorrecto(contraseniaHash)) {
-			Utilitario.mensajeError("Contraseña Inválida");
+			Utilitario.mensajeError(Utilitario.MSJ_CONTRASENIA_INVALIDA);
 			return;
 		}
 		
 		if(!Utilitario.esNombreCorrecto(txtNombreUsuario.getText())) {
-			Utilitario.mensajeError("Nombre de usuario Inválido");
+			Utilitario.mensajeError(Utilitario.MSJ_NOMBRE_INVALIDO);
 			return;
 		}
 		
 		// Validamos de que exista el usuario
 		if(!gu.existeUsuario(nombre)) {
-			Utilitario.mensajeError("No existe el usuario ingresado");
+			Utilitario.mensajeError(Utilitario.MSJ_NO_EXISTE_USUARIO);
 			return;
 		}
 		
 		// Validamos que las contrasenia coinciden
 		if(!gu.verificarContrasenia(nombre, contraseniaHash)) {
-			Utilitario.mensajeError("Contraseña erronea");
+			Utilitario.mensajeError(Utilitario.MSJ_CONTRASENIA_ERRONEA);
 			return;
 		}
 		

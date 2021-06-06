@@ -57,7 +57,6 @@ public class GestorUsuarios {
 		
 		Usuario usuarioValidar = new Usuario(nombre);
 		Usuario usuarioBD = usuarios.get(usuarios.indexOf(usuarioValidar));
-		System.out.println(usuarioBD.getNombre());
 		
 		if(!encriptador.verificarContrasenia(contraseniaPlana, usuarioBD.getContraseniaHash(), usuarioBD.getSalt())) {
 			return false;
