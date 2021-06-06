@@ -23,8 +23,8 @@ public class GestorUsuarios {
 		fileManager.escribirArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS, usuarios);
 	}
 
-	public byte[] encriptarContrasenia(String contrasenia) {
-		return this.encriptador.encriptarSHA256(contrasenia);
+	public String encriptarContrasenia(String contrasenia, int salt) {
+		return encriptador.encriptarContrasenia(contrasenia, salt);
 	}
 
 	public boolean existeUsuario(Usuario usuario) {

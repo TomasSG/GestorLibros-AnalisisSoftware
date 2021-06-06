@@ -68,10 +68,11 @@ public class FileManager {
 			
 			// De la linea obtenemos los valores que buscamos
 			String nombre = campos[0];
-			byte[] contraseniaHash = campos[1];
+			String contraseniaHash = campos[1];
+			String salt = campos[2];
 			
 			// Creamos el objeto Usuario y lo añadimos al vector
-			Usuario usuario = new Usuario(nombre, contraseniaHash);
+			Usuario usuario = new Usuario(nombre, contraseniaHash, salt);
 			usuarios.add(usuario);
 		}
 		
@@ -93,7 +94,8 @@ public class FileManager {
 
 	private void escribirRegistroUsuario(Usuario usuario, PrintStream salida) {
 		salida.print(usuario.getNombre() + Constantes.PUNTO_COMA);
-        salida.print(usuario.getContraseniaHash() + Constantes.NUEVA_LINEA);		
+        salida.print(usuario.getContraseniaHash() + Constantes.PUNTO_COMA);
+        salida.print(usuario.getSalt() + Constantes.NUEVA_LINEA);
 	}
 
 }

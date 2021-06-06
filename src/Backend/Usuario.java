@@ -3,11 +3,13 @@ package Backend;
 public class Usuario implements Comparable<Usuario>{
 	
 	private String nombre;
-	private byte[] contraseniaHash;
+	private String contraseniaHash;
+	private String salt;
 	
-	public Usuario(String nombre, byte[] contraseniaHash) {
+	public Usuario(String nombre, String contraseniaHash, String salt) {
 		this.nombre = nombre;
 		this.contraseniaHash = contraseniaHash;
+		this.salt = salt;
 	}
 
 	public String getNombre() {
@@ -18,12 +20,20 @@ public class Usuario implements Comparable<Usuario>{
 		this.nombre = nombre;
 	}
 
-	public byte[] getContraseniaHash() {
+	public String getContraseniaHash() {
 		return contraseniaHash;
 	}
 
-	public void setContraseniaHash(byte[] contraseniaHash) {
+	public void setContraseniaHash(String contraseniaHash) {
 		this.contraseniaHash = contraseniaHash;
+	}
+	
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 	@Override
