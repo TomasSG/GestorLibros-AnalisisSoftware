@@ -23,12 +23,22 @@ public class GestorUsuarios {
 		fileManager.escribirArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS, usuarios);
 	}
 
-	public String encriptarContrasenia(String contrasenia, int salt) {
+	public Vector<String> encriptarContrasenia(String contrasenia, int salt) {
 		return encriptador.encriptarContrasenia(contrasenia, salt);
 	}
 
 	public boolean existeUsuario(Usuario usuario) {
 
+		if (usuarios.isEmpty() || !usuarios.contains(usuario)) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean existeUsuario(String nombre) {
+		
+		Usuario usuario = new Usuario(nombre);
+		
 		if (usuarios.isEmpty() || !usuarios.contains(usuario)) {
 			return false;
 		}
@@ -43,14 +53,13 @@ public class GestorUsuarios {
 		return true;
 	}
 	
-	public boolean iniciarSesion(Usuario usuario) {
-		if(!existeUsuario(usuario)) {
-			return false;
-		}
+	public boolean verificarContrasenia(String nombre, String contraseniaPlana) {
 		
-		int indice = usuarios.indexOf(usuario);
+		Usuario usuarioValidar = new Usuario(nombre);
+		Usuario usuarioBD = usuarios.get(usuarios.indexOf(usuarioValidar));
+		System.out.println(usuarioBD.getNombre());
 		
-		if(!usuarios.get(indice).getContraseniaHash().equals(usuario.getContraseniaHash())) {
+		if(!encriptador.verificarContrasenia(contraseniaPlana, usuarioBD.getContraseniaHash(), usuarioBD.getSalt())) {
 			return false;
 		}
 		

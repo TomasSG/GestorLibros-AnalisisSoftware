@@ -49,7 +49,7 @@ public class Utilitario {
 		return!nombre.trim().equals("") && nombre.trim().length() < 25; 
 	}
 	
-	public static boolean esContraseniaCorrecto(char[] contrasenia) {
-		return contrasenia.length > 0; 
+	public static boolean esContraseniaCorrecto(String contrasenia) {
+		return contrasenia.length() > 0; 
 	}
 }

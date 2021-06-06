@@ -11,6 +11,12 @@ public class Usuario implements Comparable<Usuario>{
 		this.contraseniaHash = contraseniaHash;
 		this.salt = salt;
 	}
+	
+	public Usuario(String nombre) {
+		this.nombre = nombre;
+		this.contraseniaHash = null;
+		this.salt = null;
+	}
 
 	public String getNombre() {
 		return nombre;

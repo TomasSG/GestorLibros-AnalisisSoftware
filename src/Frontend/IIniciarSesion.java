@@ -11,6 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import Backend.GestorLibros;
+import Backend.GestorUsuarios;
 import Backend.Usuario;
 
 import java.awt.Color;
@@ -37,7 +38,7 @@ public class IIniciarSesion extends JFrame {
 	private JPanel contentPane;
 	private GridBagLayout layout;
 	private GridBagConstraints gbc;
-	private GestorLibros app;
+	private GestorUsuarios gu;
 	
 	private JTextField txtNombreUsuario;
 	private JPasswordField txtContrasenia;
@@ -63,9 +64,10 @@ public class IIniciarSesion extends JFrame {
 	 */
 	public IIniciarSesion() {
 		
-		app = new GestorLibros();
+		gu = new GestorUsuarios();
+		
 		try {
-			app.iniciarAplicacion();
+			gu.iniciar();
 		} catch (FileNotFoundException e1) {
 			Utilitario.mensajeError("No se logro acceder a la base datos");
 			this.dispose();
@@ -158,7 +160,7 @@ public class IIniciarSesion extends JFrame {
 				
 				if(resultado == JOptionPane.YES_OPTION) {
 					try {
-						app.finalizarAplicacion();
+						gu.finalizar();
 					} catch (FileNotFoundException e) {
 						Utilitario.mensajeError("No se logro acceder a la base datos");
 						we.getWindow().dispose();
@@ -172,9 +174,10 @@ public class IIniciarSesion extends JFrame {
 	public void iniciarSesion() {
 		
 		String nombre = txtNombreUsuario.getText();
-		byte[] contraseniaHash = app.EncriptarContrasenia(txtContrasenia.getPassword().toString());
+		String contraseniaHash = String.valueOf(txtContrasenia.getPassword());
 		
-		if(!Utilitario.esContraseniaCorrecto(txtContrasenia.getPassword())) {
+		// Validaciones sobre los campos de entrada
+		if(!Utilitario.esContraseniaCorrecto(contraseniaHash)) {
 			Utilitario.mensajeError("Contraseña Inválida");
 			return;
 		}
@@ -184,29 +187,24 @@ public class IIniciarSesion extends JFrame {
 			return;
 		}
 		
-		Usuario usuario = new Usuario(nombre, contraseniaHash);		
-		
-		
-		if(app.IniciarSesion(usuario)) {
-			
-			// Validacion de que coincidan las contraseñas
-			if(usuario.getContraseniaHash().equals(contraseniaHash)) {
-				System.out.println("LOGEADO");
-				return;
-			} else {
-				Utilitario.mensajeError("Contraseña Incorrecta");
-				return;
-			}
-				
-		} else {
-			Utilitario.mensajeError("No Existe el Usuario");
+		// Validamos de que exista el usuario
+		if(!gu.existeUsuario(nombre)) {
+			Utilitario.mensajeError("No existe el usuario ingresado");
 			return;
 		}
+		
+		// Validamos que las contrasenia coinciden
+		if(!gu.verificarContrasenia(nombre, contraseniaHash)) {
+			Utilitario.mensajeError("Contraseña erronea");
+			return;
+		}
+		
+		System.out.println("Pasar pantalla");
 		
 	}
 	
 	public void registrarUsuario() {
-		new IRegistrarUsuario(this.app, this).setVisible(true);
+		new IRegistrarUsuario(this.gu, this).setVisible(true);
 		this.setVisible(false);
 	}
 }

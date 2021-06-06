@@ -11,7 +11,6 @@ public class Constantes {
 	final public static String NUEVA_LINEA = "\n";
 	final public static String PUNTO_COMA = ";";
 	
-	// CONSTANTES HASH
-	final public static String ALGORITMO_SHA256 = "SHA-256";
-	final public static String ALGORITMO_NUMERO_RANDOM = "SHA1PRNG";
+	// CONSTANTES CIFRAD
+	final public static int SALT = 512;
 }

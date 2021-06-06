@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -23,7 +24,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Backend.Constantes;
 import Backend.GestorLibros;
+import Backend.GestorUsuarios;
 import Backend.Usuario;
 
 public class IRegistrarUsuario extends JFrame {
@@ -36,13 +39,13 @@ public class IRegistrarUsuario extends JFrame {
 	private JPasswordField txtContrasenia;
 	private JPasswordField txtContraseniaRepetida;
 
-	private GestorLibros app;
+	private GestorUsuarios app;
 	private IIniciarSesion padre;
 
 	/**
 	 * Create the frame.
 	 */
-	public IRegistrarUsuario(GestorLibros app, IIniciarSesion padre) {
+	public IRegistrarUsuario(GestorUsuarios app, IIniciarSesion padre) {
 
 		this.app = app;
 		this.padre = padre;
@@ -159,36 +162,42 @@ public class IRegistrarUsuario extends JFrame {
 		padre.setVisible(true);
 		this.dispose();
 	}
-	
+
 	public void registrarUsuario() {
-		
-		char[] contrasenia = txtContrasenia.getPassword();
-		char[] contraseniaRepetida = txtContraseniaRepetida.getPassword();
-		
-		if(!Utilitario.esContraseniaCorrecto(contrasenia) || !Utilitario.esContraseniaCorrecto(contraseniaRepetida)) {
+
+		String contrasenia = String.valueOf(txtContrasenia.getPassword());
+		String contraseniaRepetida = String.valueOf(txtContraseniaRepetida.getPassword());
+
+		// Verificaciones sobre los campos de entrada
+		if (!Utilitario.esContraseniaCorrecto(contrasenia) || !Utilitario.esContraseniaCorrecto(contraseniaRepetida)) {
 			Utilitario.mensajeError("Contraseña Inválida");
 			return;
 		}
-		
-		if(!Utilitario.esNombreCorrecto(txtNombreUsuario.getText())) {
+
+		if (!Utilitario.esNombreCorrecto(txtNombreUsuario.getText())) {
 			Utilitario.mensajeError("Nombre de usuario Inválido");
 			return;
 		}
-		
-		if(!Arrays.equals(contrasenia, contraseniaRepetida)) {
+
+		if (!contrasenia.equals(contraseniaRepetida)) {
 			Utilitario.mensajeError("No coinciden las contraseñas ingresadas");
 			return;
 		}
+
+		// Ciframos la contrasenia
+		Vector<String> resultados = app.encriptarContrasenia(contrasenia, Constantes.SALT);
+		Usuario usuario = new Usuario(txtNombreUsuario.getText(), resultados.get(0), resultados.get(1));
+
 		
-		Usuario usuario = new Usuario(txtNombreUsuario.getText(), app.EncriptarContrasenia(contrasenia.toString()));
-		
-		if(app.RegistrarUsuario(usuario) == false) {
+		// Validaciones sobre el usuario
+		if (app.registrarUsuario(usuario) == false) {
 			Utilitario.mensajeError("Ya existe el usuario ingresado");
 			return;
 		} else {
 			Utilitario.mensajeExito("Usuario registrado exitosamente!");
 			return;
 		}
+
 	}
 
 }
