@@ -75,18 +75,18 @@ public class IIngresoDatos extends JFrame {
 		btnActualizarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnActualizarLibro.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JButton btnEleminarLibro = new JButton("Eliminar Libro");
-		btnEleminarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnEleminarLibro.setHorizontalAlignment(SwingConstants.CENTER);
+		JButton btnEliminarLibro = new JButton("Eliminar Libro");
+		btnEliminarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
+		btnEliminarLibro.setHorizontalAlignment(SwingConstants.CENTER);
 
 		JButton btnOrdenarLibro = new JButton("Ordenar Libros");
 		btnOrdenarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnOrdenarLibro.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JButton btnListarLibro = new JButton("Listar Libros");
-		btnListarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnListarLibro.setHorizontalAlignment(SwingConstants.CENTER);
-		
+		JButton btnListarLibros = new JButton("Listar Libros");
+		btnListarLibros.setFont(new Font("Arial", Font.PLAIN, 17));
+		btnListarLibros.setHorizontalAlignment(SwingConstants.CENTER);
+
 		JButton btnVoler = new JButton("Volver");
 		btnVoler.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnVoler.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,24 +114,24 @@ public class IIngresoDatos extends JFrame {
 
 		Utilitario.anadirObjeto(btnActualizarLibro, contentPane, layout, gbc, 0, 7, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 8, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH); 
 
-		Utilitario.anadirObjeto(btnEleminarLibro, contentPane, layout, gbc, 0, 9, 5, 1, GridBagConstraints.CENTER,
+		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 8, 5, 1,
+				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
+
+		Utilitario.anadirObjeto(btnEliminarLibro, contentPane, layout, gbc, 0, 9, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 10, 5, 1,
 				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 
 		Utilitario.anadirObjeto(btnOrdenarLibro, contentPane, layout, gbc, 0, 11, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
-		
+
 		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 12, 5, 1,
 				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(btnListarLibro, contentPane, layout, gbc, 0, 13, 5, 1, GridBagConstraints.CENTER,
+		Utilitario.anadirObjeto(btnListarLibros, contentPane, layout, gbc, 0, 13, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
-		
+
 		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 14, 5, 1,
 				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 
@@ -148,9 +148,9 @@ public class IIngresoDatos extends JFrame {
 				}
 			}
 		});
-		
+
 		btnVoler.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int resultado = Utilitario.mensajeCerrarVentana();
@@ -158,7 +158,47 @@ public class IIngresoDatos extends JFrame {
 				if (resultado == JOptionPane.YES_OPTION) {
 					cerrarVentana(IIngresoDatos.this);
 				}
-				
+
+			}
+		});
+
+		btnAltaLibro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abriraPantalla(1);
+			}
+		});
+
+		btnConsultarLibro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abriraPantalla(2);
+			}
+		});
+		
+		btnActualizarLibro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abriraPantalla(3);
+			}
+		});
+		
+		btnEliminarLibro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abriraPantalla(4);
+			}
+		});
+		
+		btnListarLibros.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abriraPantalla(5);
 			}
 		});
 	}
@@ -168,4 +208,23 @@ public class IIngresoDatos extends JFrame {
 		this.dispose();
 	}
 
+	public void abriraPantalla(int opcion) {
+		JFrame pantalla = null;
+
+		if (opcion == 1) {
+			// pantalla = new IAltaLibro(gl, this);
+		} else if (opcion == 2) {
+			// pantalla = new IConsultarLibro(gl, this);
+		} else if (opcion == 3) {
+			// pantalla = new IActualizarLibro(gl, this);
+		} else if (opcion == 4) {
+			// pantalla = new IEliminarLibro(gl, this);
+		} else if (opcion == 5) {
+			// pantalla = new IListarLibros(gl, this);
+		}
+
+		pantalla.setLocationRelativeTo(null);
+		pantalla.setVisible(true);
+		this.setVisible(false);
+	}
 }

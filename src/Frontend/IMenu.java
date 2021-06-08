@@ -117,7 +117,7 @@ public class IMenu extends JFrame {
 		
 		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 6, 5, 1, GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 		
-		Utilitario.anadirObjeto(btnSalir, contentPane, layout, gbc, 0, 7, 5, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+		Utilitario.anadirObjeto(btnSalir, contentPane, layout, gbc, 0, 7, 5, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH); 
 		
 		// Acciones de los botones
 		this.addWindowListener(new WindowAdapter() {
