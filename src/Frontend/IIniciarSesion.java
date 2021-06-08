@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -46,6 +47,7 @@ public class IIniciarSesion extends JFrame {
 			public void run() {
 				try {
 					IIniciarSesion frame = new IIniciarSesion();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -88,7 +90,8 @@ public class IIniciarSesion extends JFrame {
 		contentPane.setLayout(layout);
 		setContentPane(contentPane);
 
-
+		
+		// Elementos del a GUI
 		JLabel lblIniciarSesion = new JLabel("Iniciar Sesi\u00F3n");
 		lblIniciarSesion.setFont(new Font("Arial", Font.BOLD, 24));
 		lblIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);	
@@ -98,7 +101,7 @@ public class IIniciarSesion extends JFrame {
 		lblNombreUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreUsuario.setBounds(308, 16, 130, 30);
 		
-		txtNombreUsuario = new JTextField(" ");
+		txtNombreUsuario = new JTextField("");
 		
 		JLabel lblContraseña = new JLabel("Contrasenia: ");
 		lblContraseña.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -115,6 +118,7 @@ public class IIniciarSesion extends JFrame {
 		btnRegistrarse.setHorizontalAlignment(SwingConstants.CENTER);
 
 		
+		// Ubicarlos en el espacio		
 		Utilitario.anadirObjeto(lblIniciarSesion, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 		
 		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 1, 5, 1, GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
@@ -132,6 +136,8 @@ public class IIniciarSesion extends JFrame {
 		Utilitario.anadirObjeto(btnIniciarSesion, contentPane, layout, gbc, 0, 6, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 		Utilitario.anadirObjeto(btnRegistrarse, contentPane, layout, gbc, 2, 6, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 		
+
+		// Acciones de los votoes
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			
 			@Override
@@ -154,13 +160,7 @@ public class IIniciarSesion extends JFrame {
 				int resultado = Utilitario.mensajeCerrarVentana();
 				
 				if(resultado == JOptionPane.YES_OPTION) {
-					try {
-						gu.finalizar();
-					} catch (FileNotFoundException e) {
-						Utilitario.mensajeError(Utilitario.MSJ_ERROR_BD);
-						we.getWindow().dispose();
-					}
-					we.getWindow().dispose();
+					cerrarVentana(we.getWindow());
 				}
 			}
 		});
@@ -194,12 +194,30 @@ public class IIniciarSesion extends JFrame {
 			return;
 		}
 		
-		System.out.println("Pasar pantalla");
+		IMenu pantallaMenu = new IMenu();
+		pantallaMenu.setLocationRelativeTo(null);
+		pantallaMenu.setVisible(true);
+		cerrarVentana(this);
 		
 	}
 	
 	public void registrarUsuario() {
-		new IRegistrarUsuario(this.gu, this).setVisible(true);
+		txtContrasenia.setText("");
+		txtNombreUsuario.setText("");
+		
+		IRegistrarUsuario pantallaRegistrar =  new IRegistrarUsuario(this.gu, this);
+		pantallaRegistrar.setLocationRelativeTo(null);
+		pantallaRegistrar.setVisible(true);
 		this.setVisible(false);
+	}
+	
+	public void cerrarVentana(Window w) {
+		try {
+			gu.finalizar();
+		} catch (FileNotFoundException e) {
+			Utilitario.mensajeError(Utilitario.MSJ_ERROR_BD);
+			w.dispose();
+		}
+		w.dispose();
 	}
 }

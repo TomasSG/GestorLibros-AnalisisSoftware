@@ -86,7 +86,7 @@ public class IRegistrarUsuario extends JFrame {
 		txtContrasenia.setText("");
 		txtContraseniaRepetida = new JPasswordField(10);
 		txtContraseniaRepetida.setText("");
-		txtNombreUsuario = new JTextField(" ");
+		txtNombreUsuario = new JTextField("");
 
 		JButton btnVolver = new JButton("Vovler");
 		btnVolver.setFont(new Font("Arial", Font.PLAIN, 17));
