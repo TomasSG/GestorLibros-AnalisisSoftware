@@ -197,7 +197,7 @@ public class IIniciarSesion extends JFrame {
 		IMenu pantallaMenu = new IMenu();
 		pantallaMenu.setLocationRelativeTo(null);
 		pantallaMenu.setVisible(true);
-		cerrarVentana(this);
+		cerrarVentana(this); 
 		
 	}
 	

@@ -31,9 +31,9 @@ public class IIngresoDatos extends JFrame {
 	private GridBagConstraints gbc;
 
 	private GestorLibros gl;
-	private IMenu padre;
+	private JFrame padre;
 
-	public IIngresoDatos(GestorLibros gl, IMenu padre) {
+	public IIngresoDatos(GestorLibros gl, JFrame padre) {
 
 		this.gl = gl;
 		this.padre = padre;
@@ -90,6 +90,8 @@ public class IIngresoDatos extends JFrame {
 		JButton btnVoler = new JButton("Volver");
 		btnVoler.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnVoler.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		
 
 		// Disponer elementos
 		Utilitario.anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
@@ -141,11 +143,8 @@ public class IIngresoDatos extends JFrame {
 		// Acciones de los botones
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
-				int resultado = Utilitario.mensajeCerrarVentana();
+				cerrarVentana(we.getWindow());
 
-				if (resultado == JOptionPane.YES_OPTION) {
-					cerrarVentana(we.getWindow());
-				}
 			}
 		});
 
@@ -153,12 +152,7 @@ public class IIngresoDatos extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int resultado = Utilitario.mensajeCerrarVentana();
-
-				if (resultado == JOptionPane.YES_OPTION) {
-					cerrarVentana(IIngresoDatos.this);
-				}
-
+				cerrarVentana(IIngresoDatos.this);
 			}
 		});
 
@@ -177,7 +171,7 @@ public class IIngresoDatos extends JFrame {
 				abriraPantalla(2);
 			}
 		});
-		
+
 		btnActualizarLibro.addActionListener(new ActionListener() {
 
 			@Override
@@ -185,7 +179,7 @@ public class IIngresoDatos extends JFrame {
 				abriraPantalla(3);
 			}
 		});
-		
+
 		btnEliminarLibro.addActionListener(new ActionListener() {
 
 			@Override
@@ -193,7 +187,7 @@ public class IIngresoDatos extends JFrame {
 				abriraPantalla(4);
 			}
 		});
-		
+
 		btnListarLibros.addActionListener(new ActionListener() {
 
 			@Override
@@ -212,7 +206,7 @@ public class IIngresoDatos extends JFrame {
 		JFrame pantalla = null;
 
 		if (opcion == 1) {
-			// pantalla = new IAltaLibro(gl, this);
+			pantalla = new IAltaLibro(gl, this);
 		} else if (opcion == 2) {
 			// pantalla = new IConsultarLibro(gl, this);
 		} else if (opcion == 3) {

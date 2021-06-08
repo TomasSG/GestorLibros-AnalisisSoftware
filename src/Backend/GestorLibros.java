@@ -29,7 +29,7 @@ public class GestorLibros {
 
 	public void finalizar() throws FileNotFoundException {
 		fileManager.escribirArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS, libros);
-	}
+	} 
 
 	/*
 	 * Genera un nuevo registro con la información del libro. Si se genero el
