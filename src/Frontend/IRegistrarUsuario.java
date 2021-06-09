@@ -117,11 +117,7 @@ public class IRegistrarUsuario extends MyFrame {
 
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
-				int resultado = mensajeCerrarVentana();
-
-				if (resultado == JOptionPane.YES_OPTION) {
 					volver(padre);
-				}
 			}
 		});
 	}

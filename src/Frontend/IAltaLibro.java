@@ -11,9 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.NumberFormat;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,14 +23,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.NumberFormatter;
 
 import Backend.GestorLibros;
 
 public class IAltaLibro extends MyFrame {
 
 	private JTextField txtIsbn;
-	private JTextField txtAnioLibro;
-	private JTextField txtEdicionLibro;
+	private JFormattedTextField txtAnioLibro;
+	private JFormattedTextField txtEdicionLibro;
 	private JTextField txtEditorialLibro;
 	private JTextField txtAutorLibro;
 	private JTextField txtTitluoLibro;
@@ -42,6 +45,11 @@ public class IAltaLibro extends MyFrame {
 
 		this.gl = gl;
 		this.padre = padre;
+		
+		// Para solo aceptar nros como input
+		MyNumberFormatter formatter = new MyNumberFormatter(NumberFormat.getIntegerInstance());
+		formatter.setValueClass(Long.class);
+		formatter.setAllowsInvalid(false);
 
 		// Elementos
 		MyLabel lblTitulo = new MyLabel(":-: ALTA LIBRO :-:", Utilitario.FONT_TITULOS);
@@ -60,8 +68,8 @@ public class IAltaLibro extends MyFrame {
 		txtTitluoLibro = new JTextField("");
 		txtAutorLibro = new JTextField("");
 		txtEditorialLibro = new JTextField("");
-		txtEdicionLibro = new JTextField("");
-		txtAnioLibro = new JTextField("");
+		txtEdicionLibro = new JFormattedTextField(formatter);
+		txtAnioLibro = new JFormattedTextField(formatter);
 
 		// Disponer elementos
 		anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
@@ -149,6 +157,20 @@ public class IAltaLibro extends MyFrame {
 				volver(padre);
 			}
 		});
-
+		
+		btnAnadir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				registrar();
+			}
+		});
+		
+	}
+	
+	public void registrar() {
+		
+		
+		
 	}
 }
