@@ -24,12 +24,8 @@ import javax.swing.border.EmptyBorder;
 
 import Backend.GestorLibros;
 
-public class IAltaLibro extends JFrame {
+public class IAltaLibro extends MyFrame {
 
-	private JPanel contentPane;
-	private GridBagLayout layout;
-	private GridBagConstraints gbc;
-	
 	private JTextField txtIsbn;
 	private JTextField txtAnioLibro;
 	private JTextField txtEdicionLibro;
@@ -42,24 +38,10 @@ public class IAltaLibro extends JFrame {
 
 	public IAltaLibro(GestorLibros gl, JFrame padre) {
 
+		super(Utilitario.ANCHO_LIBROS, Utilitario.LARGO_LIBROS);
+
 		this.gl = gl;
 		this.padre = padre;
-
-		// Estética
-		setResizable(false);
-		setBackground(Color.WHITE);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 500, 500);
-
-		// Para layout
-		layout = new GridBagLayout();
-		gbc = new GridBagConstraints();
-
-		// JPanel
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(layout);
-		setContentPane(contentPane);
 
 		// Elementos
 		MyLabel lblTitulo = new MyLabel(":-: ALTA LIBRO :-:", Utilitario.FONT_TITULOS);
@@ -70,94 +52,93 @@ public class IAltaLibro extends JFrame {
 		MyLabel lblEditorialLibro = new MyLabel("Editorial: ", Utilitario.FONT_CAMPOS);
 		MyLabel lblEdicionLibro = new MyLabel("Edicion: ", Utilitario.FONT_CAMPOS);
 		MyLabel lblAnioLibro = new MyLabel("Año Publicación: ", Utilitario.FONT_CAMPOS);
-		
+
 		MyButton btnVoler = new MyButton("Volver");
 		MyButton btnAnadir = new MyButton("Añadir");
-	
+
 		txtIsbn = new JTextField("");
 		txtTitluoLibro = new JTextField("");
 		txtAutorLibro = new JTextField("");
 		txtEditorialLibro = new JTextField("");
 		txtEdicionLibro = new JTextField("");
 		txtAnioLibro = new JTextField("");
-		
 
 		// Disponer elementos
-		Utilitario.anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
+		anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
-		Utilitario.anadirObjeto(lblElegirOpcion, contentPane, layout, gbc, 0, 1, 5, 1, GridBagConstraints.PAGE_START,
+		anadirObjeto(lblElegirOpcion, contentPane, layout, gbc, 0, 1, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 2, 5, 1,
+		anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 2, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(lblIsbn, contentPane, layout, gbc, 0, 3, 3, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(txtIsbn, contentPane, layout, gbc, 3, 3, 2, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 4, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(lblTituloLibro, contentPane, layout, gbc, 0, 5, 3, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(txtTitluoLibro, contentPane, layout, gbc, 3, 5, 2, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 6, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(lblAutorLibro, contentPane, layout, gbc, 0, 7, 3, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(txtAutorLibro, contentPane, layout, gbc, 3, 7, 2, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 8, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(lblEditorialLibro, contentPane, layout, gbc, 0, 9, 3, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(txtEditorialLibro, contentPane, layout, gbc, 3, 9, 2, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 10, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(lblEdicionLibro, contentPane, layout, gbc, 0, 11, 3, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(txtEdicionLibro, contentPane, layout, gbc, 3, 11, 2, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 12, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(lblAnioLibro, contentPane, layout, gbc, 0, 13, 3, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(txtAnioLibro, contentPane, layout, gbc, 3, 13, 2, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 14, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(btnVoler, contentPane, layout, gbc, 0, 15, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createHorizontalStrut(200), contentPane, layout, gbc, 1, 15, 3, 1,
 				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(lblIsbn, contentPane, layout, gbc, 0, 3, 3, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(txtIsbn, contentPane, layout, gbc, 3, 3, 2, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 4, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(lblTituloLibro, contentPane, layout, gbc, 0, 5, 3, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(txtTitluoLibro, contentPane, layout, gbc, 3, 5, 2, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 6, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(lblAutorLibro, contentPane, layout, gbc, 0, 7, 3, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(txtAutorLibro, contentPane, layout, gbc, 3, 7, 2, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 8, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(lblEditorialLibro, contentPane, layout, gbc, 0, 9, 3, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(txtEditorialLibro, contentPane, layout, gbc, 3, 9, 2, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 10, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(lblEdicionLibro, contentPane, layout, gbc, 0, 11, 3, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(txtEdicionLibro, contentPane, layout, gbc, 3, 11, 2, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 12, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(lblAnioLibro, contentPane, layout, gbc, 0, 13, 3, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(txtAnioLibro, contentPane, layout, gbc, 3, 13, 2, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 14, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnVoler, contentPane, layout, gbc, 0, 15, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(Box.createHorizontalStrut(200), contentPane, layout, gbc, 1, 15, 3, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-		
-		Utilitario.anadirObjeto(btnAnadir, contentPane, layout, gbc, 4, 15, 1, 1, GridBagConstraints.CENTER,
+		anadirObjeto(btnAnadir, contentPane, layout, gbc, 4, 15, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 
 		// Acciones de los botones
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
-				cerrarVentana(we.getWindow());
+				volver(padre);
 			}
 		});
 
@@ -165,15 +146,9 @@ public class IAltaLibro extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cerrarVentana(IAltaLibro.this);
+				volver(padre);
 			}
 		});
 
 	}
-
-	public void cerrarVentana(Window w) {
-		padre.setVisible(true);
-		this.dispose();
-	}
-
 }

@@ -32,41 +32,10 @@ public class Utilitario {
 	public static final Font FONT_TITULOS = new Font("Arial", Font.BOLD, 24);
 	public static final Font FONT_CAMPOS = new Font("Arial", Font.PLAIN, 17);
 	
+	// Anchos y largos
+	public static final int ANCHO_USUARIOS = 300;
+	public static final int LARGO_USUARIOS = 400;
+	public static final int ANCHO_LIBROS = 500;
+	public static final int LARGO_LIBROS = 500;
 	
-	public static void anadirObjeto(Component componente, Container container, GridBagLayout layout, GridBagConstraints gbc,
-			int gridx, int gridy, int gridwidth, int gridheight, int anchor, int fill) {
-		
-		gbc.anchor = anchor;
-		gbc.fill = fill;
-		
-		gbc.gridx = gridx;
-		gbc.gridy = gridy;
-		
-		gbc.gridwidth = gridwidth;
-		gbc.gridheight = gridheight;
-		
-		
-		layout.setConstraints(componente, gbc);
-		container.add(componente);
-	}
-	
-	public static int mensajeCerrarVentana() {
-		return JOptionPane.showConfirmDialog(null, MSJ_CERRAR_VENTANA, TITULO_CERRAR_VENTANA, JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-	}
-	
-	public static int mensajeError(String msj) {
-		return JOptionPane.showConfirmDialog(null, msj, TITULO_ERROR, JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-	}
-	
-	public static int mensajeExito(String msj) {
-		return JOptionPane.showConfirmDialog(null, msj, TITULO_EXITO, JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
-	}
-	
-	public static boolean esNombreCorrecto(String nombre) {
-		return!nombre.trim().equals("") && nombre.trim().length() < 25; 
-	}
-	
-	public static boolean esContraseniaCorrecto(String contrasenia) {
-		return contrasenia.length() > 0; 
-	}
 }

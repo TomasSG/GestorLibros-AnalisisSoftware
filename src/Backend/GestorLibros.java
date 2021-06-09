@@ -5,7 +5,7 @@ import java.util.*;
 
 import javax.swing.text.PlainDocument;
 
-public class GestorLibros {
+public class GestorLibros implements Gestor {
 
 	private Vector<Libro> libros;
 	private FileManager fileManager;
@@ -15,26 +15,13 @@ public class GestorLibros {
 		this.fileManager = new FileManager();
 	}
 
-	/*
-	 * Carga los registros a memoria.
-	 */
-
 	public void iniciar() throws FileNotFoundException {
 		libros = fileManager.leerArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS);
 	}
 
-	/*
-	 * Guarda los vectores en las BD.
-	 */
-
 	public void finalizar() throws FileNotFoundException {
 		fileManager.escribirArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS, libros);
 	} 
-
-	/*
-	 * Genera un nuevo registro con la información del libro. Si se genero el
-	 * registro retorna true. Si el libro ya existe retorna false.
-	 */
 
 	public boolean altaLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {
@@ -56,11 +43,6 @@ public class GestorLibros {
 		return true;
 	}
 
-	/*
-	 * Busca el libro consultado usando el ISBN. Si existe el libro lo retorna. Si
-	 * no existe el libro retorna null.
-	 */
-
 	public Libro consultarLibro(String isbn) {
 
 		// Verificamos que el vector este vacío
@@ -80,10 +62,6 @@ public class GestorLibros {
 
 	}
 
-	/*
-	 * Modifica el registro usando como el indice el ISBN. Si existe el libro pisa
-	 * el registro y retorna true. Si no existe el libro retorna false.
-	 */
 
 	public boolean actualizarLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {
@@ -116,17 +94,9 @@ public class GestorLibros {
 		return true;
 	}
 
-	/*
-	 * Elimina el registro de la colección.
-	 */
-
 	public void eliminarLibro(String isbn) {
 		this.libros.remove(new Libro(isbn));
 	}
-
-	/*
-	 * Ordena el vector. Si esta vacío no hace nada. Si tiene elementos los ordena.
-	 */
 
 	public void ordenarLibros() {
 
@@ -137,10 +107,6 @@ public class GestorLibros {
 			Collections.sort(this.libros);
 		}
 	}
-
-	/*
-	 * Retornamos el vector con los libros para que la GUI los muestre.
-	 */
 
 	public Vector<Libro> listarLibros() {
 		return this.libros;

@@ -24,35 +24,17 @@ import javax.swing.border.EmptyBorder;
 
 import Backend.GestorLibros;
 
-public class IIngresoDatos extends JFrame {
-
-	private JPanel contentPane;
-	private GridBagLayout layout;
-	private GridBagConstraints gbc;
+public class IIngresoDatos extends MyFrame {
 
 	private GestorLibros gl;
 	private JFrame padre;
 
 	public IIngresoDatos(GestorLibros gl, JFrame padre) {
 
+		super(Utilitario.ANCHO_LIBROS, Utilitario.LARGO_LIBROS);
+
 		this.gl = gl;
 		this.padre = padre;
-
-		// Estética
-		setResizable(false);
-		setBackground(Color.WHITE);
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 500, 500);
-
-		// Para layout
-		layout = new GridBagLayout();
-		gbc = new GridBagConstraints();
-
-		// JPanel
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(layout);
-		setContentPane(contentPane);
 
 		// Elementos
 		MyLabel lblTitulo = new MyLabel(":-: CENTRO GESTIÓN DE LIBROS :-:", Utilitario.FONT_TITULOS);
@@ -65,61 +47,58 @@ public class IIngresoDatos extends JFrame {
 		MyButton btnOrdenarLibro = new MyButton("Ordenar Libros");
 		MyButton btnListarLibros = new MyButton("Listar Libros");
 		MyButton btnVoler = new MyButton("Volver");
-	
-		
-		
 
 		// Disponer elementos
-		Utilitario.anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
+		anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
-		Utilitario.anadirObjeto(lblElegirOpcion, contentPane, layout, gbc, 0, 1, 5, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 2, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnAltaLibro, contentPane, layout, gbc, 0, 3, 5, 1, GridBagConstraints.CENTER,
+		anadirObjeto(lblElegirOpcion, contentPane, layout, gbc, 0, 1, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 4, 2, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnConsultarLibro, contentPane, layout, gbc, 0, 5, 5, 1, GridBagConstraints.CENTER,
+		anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 2, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 6, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnActualizarLibro, contentPane, layout, gbc, 0, 7, 5, 1, GridBagConstraints.CENTER,
+		anadirObjeto(btnAltaLibro, contentPane, layout, gbc, 0, 3, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 8, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnEliminarLibro, contentPane, layout, gbc, 0, 9, 5, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH);
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 10, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnOrdenarLibro, contentPane, layout, gbc, 0, 11, 5, 1, GridBagConstraints.CENTER,
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 4, 2, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 12, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnListarLibros, contentPane, layout, gbc, 0, 13, 5, 1, GridBagConstraints.CENTER,
+		anadirObjeto(btnConsultarLibro, contentPane, layout, gbc, 0, 5, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 14, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 6, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(btnVoler, contentPane, layout, gbc, 0, 15, 5, 1, GridBagConstraints.CENTER,
+		anadirObjeto(btnActualizarLibro, contentPane, layout, gbc, 0, 7, 5, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 8, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(btnEliminarLibro, contentPane, layout, gbc, 0, 9, 5, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 10, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(btnOrdenarLibro, contentPane, layout, gbc, 0, 11, 5, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 12, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(btnListarLibros, contentPane, layout, gbc, 0, 13, 5, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 14, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(btnVoler, contentPane, layout, gbc, 0, 15, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 
 		// Acciones de los botones
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
-				cerrarVentana(we.getWindow());
+				volver(padre);
 
 			}
 		});
@@ -128,7 +107,7 @@ public class IIngresoDatos extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cerrarVentana(IIngresoDatos.this);
+				volver(padre);
 			}
 		});
 
@@ -171,11 +150,6 @@ public class IIngresoDatos extends JFrame {
 				abriraPantalla(5);
 			}
 		});
-	}
-
-	public void cerrarVentana(Window w) {
-		padre.setVisible(true);
-		this.dispose();
 	}
 
 	public void abriraPantalla(int opcion) {

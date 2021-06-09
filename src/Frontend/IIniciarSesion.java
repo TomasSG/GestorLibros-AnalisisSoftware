@@ -27,13 +27,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 
-public class IIniciarSesion extends JFrame {
+public class IIniciarSesion extends MyFrame {
 
-	private JPanel contentPane;
-	private GridBagLayout layout;
-	private GridBagConstraints gbc;
 	private GestorUsuarios gu;
-
 	private JTextField txtNombreUsuario;
 	private JPasswordField txtContrasenia;
 
@@ -56,73 +52,54 @@ public class IIniciarSesion extends JFrame {
 
 	public IIniciarSesion() {
 
+		super(Utilitario.ANCHO_USUARIOS, Utilitario.LARGO_USUARIOS);
+
 		gu = new GestorUsuarios();
 
 		try {
 			gu.iniciar();
 		} catch (FileNotFoundException e1) {
-			Utilitario.mensajeError(Utilitario.MSJ_ERROR_BD);
+			mensajeError(Utilitario.MSJ_ERROR_BD);
 			this.dispose();
 		}
-
-		setResizable(false);
-		setBackground(Color.WHITE);
-
-		// Operación al cerrar la aplicación
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
-		// Límites
-		setBounds(100, 100, 300, 400);
-
-		// layout
-		layout = new GridBagLayout();
-		gbc = new GridBagConstraints();
-
-		// contentPane
-		contentPane = new JPanel();
-		contentPane.setForeground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(layout);
-		setContentPane(contentPane);
 
 		// Elementos del a GUI
 		MyLabel lblIniciarSesion = new MyLabel("Iniciar Sesi\u00F3n", Utilitario.FONT_TITULOS);
 		MyLabel lblNombreUsuario = new MyLabel("Nombre Usuario: ", Utilitario.FONT_CAMPOS);
 		MyLabel lblContraseña = new MyLabel("Contrasenia: ", Utilitario.FONT_CAMPOS);
-		
+
 		txtNombreUsuario = new JTextField("");
 		txtContrasenia = new JPasswordField(10);
 
 		MyButton btnIniciarSesion = new MyButton("Iniciar Sesión");
 		MyButton btnRegistrarse = new MyButton("Registrarse");
-		
 
 		// Ubicarlos en el espacio
-		Utilitario.anadirObjeto(lblIniciarSesion, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
+		anadirObjeto(lblIniciarSesion, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 1, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(lblNombreUsuario, contentPane, layout, gbc, 0, 2, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH);
-		Utilitario.anadirObjeto(txtNombreUsuario, contentPane, layout, gbc, 1, 2, 2, 1, GridBagConstraints.CENTER,
+		anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 1, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 3, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(lblContraseña, contentPane, layout, gbc, 0, 4, 1, 1, GridBagConstraints.CENTER,
+		anadirObjeto(lblNombreUsuario, contentPane, layout, gbc, 0, 2, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
-		Utilitario.anadirObjeto(txtContrasenia, contentPane, layout, gbc, 1, 4, 2, 1, GridBagConstraints.CENTER,
+		anadirObjeto(txtNombreUsuario, contentPane, layout, gbc, 1, 2, 2, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 5, 5, 1,
-				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
-
-		Utilitario.anadirObjeto(btnIniciarSesion, contentPane, layout, gbc, 0, 6, 1, 1, GridBagConstraints.CENTER,
+		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 3, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
-		Utilitario.anadirObjeto(btnRegistrarse, contentPane, layout, gbc, 2, 6, 1, 1, GridBagConstraints.CENTER,
+
+		anadirObjeto(lblContraseña, contentPane, layout, gbc, 0, 4, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+		anadirObjeto(txtContrasenia, contentPane, layout, gbc, 1, 4, 2, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(Box.createVerticalStrut(50), contentPane, layout, gbc, 0, 5, 5, 1, GridBagConstraints.PAGE_START,
+				GridBagConstraints.BOTH);
+
+		anadirObjeto(btnIniciarSesion, contentPane, layout, gbc, 0, 6, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH);
+		anadirObjeto(btnRegistrarse, contentPane, layout, gbc, 2, 6, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 
 		// Acciones de los votoes
@@ -145,10 +122,10 @@ public class IIniciarSesion extends JFrame {
 
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
-				int resultado = Utilitario.mensajeCerrarVentana();
+				int resultado = mensajeCerrarVentana();
 
 				if (resultado == JOptionPane.YES_OPTION) {
-					cerrarVentana(we.getWindow());
+					cerrarVentana(we.getWindow(), gu);
 				}
 			}
 		});
@@ -160,32 +137,32 @@ public class IIniciarSesion extends JFrame {
 		String contraseniaHash = String.valueOf(txtContrasenia.getPassword());
 
 		// Validaciones sobre los campos de entrada
-		if (!Utilitario.esContraseniaCorrecto(contraseniaHash)) {
-			Utilitario.mensajeError(Utilitario.MSJ_CONTRASENIA_INVALIDA);
+		if (!esContraseniaCorrecto(contraseniaHash)) {
+			mensajeError(Utilitario.MSJ_CONTRASENIA_INVALIDA);
 			return;
 		}
 
-		if (!Utilitario.esNombreCorrecto(txtNombreUsuario.getText())) {
-			Utilitario.mensajeError(Utilitario.MSJ_NOMBRE_INVALIDO);
+		if (!esNombreCorrecto(txtNombreUsuario.getText())) {
+			mensajeError(Utilitario.MSJ_NOMBRE_INVALIDO);
 			return;
 		}
 
 		// Validamos de que exista el usuario
 		if (!gu.existeUsuario(nombre)) {
-			Utilitario.mensajeError(Utilitario.MSJ_NO_EXISTE_USUARIO);
+			mensajeError(Utilitario.MSJ_NO_EXISTE_USUARIO);
 			return;
 		}
 
 		// Validamos que las contrasenia coinciden
 		if (!gu.verificarContrasenia(nombre, contraseniaHash)) {
-			Utilitario.mensajeError(Utilitario.MSJ_CONTRASENIA_ERRONEA);
+			mensajeError(Utilitario.MSJ_CONTRASENIA_ERRONEA);
 			return;
 		}
 
 		IMenu pantallaMenu = new IMenu();
 		pantallaMenu.setLocationRelativeTo(null);
 		pantallaMenu.setVisible(true);
-		cerrarVentana(this);
+		cerrarVentana(this, gu);
 
 	}
 
@@ -197,15 +174,5 @@ public class IIniciarSesion extends JFrame {
 		pantallaRegistrar.setLocationRelativeTo(null);
 		pantallaRegistrar.setVisible(true);
 		this.setVisible(false);
-	}
-
-	public void cerrarVentana(Window w) {
-		try {
-			gu.finalizar();
-		} catch (FileNotFoundException e) {
-			Utilitario.mensajeError(Utilitario.MSJ_ERROR_BD);
-			w.dispose();
-		}
-		w.dispose();
 	}
 }

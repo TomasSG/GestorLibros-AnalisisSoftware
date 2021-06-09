@@ -3,7 +3,7 @@ package Backend;
 import java.io.FileNotFoundException;
 import java.util.Vector;
 
-public class GestorUsuarios {
+public class GestorUsuarios implements Gestor{
 	
 	private Vector<Usuario> usuarios;
 	private FileManager fileManager;
