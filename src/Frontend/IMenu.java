@@ -28,25 +28,6 @@ public class IMenu extends MyFrame {
 
 	private GestorLibros gl;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IMenu frame = new IMenu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public IMenu() {
 
 		super(Utilitario.ANCHO_LIBROS, Utilitario.LARGO_LIBROS);

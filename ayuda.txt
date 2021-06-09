@@ -1,6 +1,37 @@
-EJEMPLO DE
-PRUEBA
-A 
-VER 
-COMO 
-VA
+|------------------------------------------------------------|
+     MENU PRINCIPAL
+|------------------------------------------------------------|
+
+Aqui podra encontrar tres opciones:
+1) Ingreso de Datos, donde podría realizar las operaciones de ABM.
+2) Ayuda, donde podra visualizar la ayuda para utilizar la aplicacion.
+3) Salir, para finalizar la ejecucion
+
+|--------------------------------------------------------------|
+     INGRESO DE DATOS 
+|--------------------------------------------------------------| 
+
+Aqui encontramos 5 opciones:
+1) Alta libro, donde podra ingresar los datos para generar un nuevo registro.
+2) Consultar/Actualizar/Eliminar Libro, donde tendra que seleccionar un ISBN ya existente para realizar cualquiera de las operaciones.
+3) Ordenar Libros, ordena los registros por el campo ISBN de forma ascendente.
+4) Listar Libros, donde podra observar todos los registros junto con todos los campos.
+5) Volver, para volver a la pantalla previa.
+
+|-------------------------------------------------------------|
+     DATOS DE LIBROS 
+|-------------------------------------------------------------|
+
+Los campos que se asocian con cada libro son:
+* ISBN: debe contener tres guiones (-).
+* Titulo: debe contener entre 1 y 20 caracteres.
+* Autor: debe contener entre 1 y 20 caracteres.
+* Editorial: debe contener entre 1 y 20 caracteres.
+* Edicion: numero entero positivo.
+* Anio Publicacion: numero entero positivo.
+
+|-------------------------------------------------------------|
+     PRIVACIDAD DATOS DE USUARIO 
+|-------------------------------------------------------------|
+
+Las contrasenias son almacenadas encriptadas en una base de datos, de forma tal que si un atacante accede al archivo no podrá conocer las contrasenias de los usuarios.

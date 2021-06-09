@@ -11,8 +11,10 @@ import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 import Backend.Constantes;
 import Backend.FileManager;
@@ -23,7 +25,7 @@ public class IAyuda extends MyFrame {
 
 	public IAyuda(JFrame padre) {
 
-		super(Utilitario.ANCHO_LIBROS, Utilitario.LARGO_LIBROS);
+		super(700, 700);
 		this.padre = padre;
 
 		FileManager fm = new FileManager();
@@ -44,11 +46,15 @@ public class IAyuda extends MyFrame {
 
 		JTextArea ayuda = new JTextArea();
 		ayuda.setEditable(false);
-		ayuda.setPreferredSize(new Dimension(500, 500));
+		//ayuda.setPreferredSize(new Dimension(500, 500));
+
 		for(String linea : textoAyuda) {
 			ayuda.append(linea + "\n");
 		}
 		JScrollPane areaAyuda = new JScrollPane(ayuda);
+		areaAyuda.setPreferredSize(new Dimension(500, 500));
+		areaAyuda.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		areaAyuda.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
 
 		// Disponer elementos
