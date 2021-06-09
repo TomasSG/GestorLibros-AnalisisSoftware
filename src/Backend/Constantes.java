@@ -5,6 +5,7 @@ public class Constantes {
 	// PATH ARCHIVOS
 	final public static String PATH_BASE_DATOS_LIBROS = "./libros.tsv";
 	final public static String PATH_BASE_DATOS_USUARIOS = "./usuarios.csv";
+	final public static String PATH_AYUDA = "./ayuda.txt";
 	
 	// CONSTANTES DE CARACTERES
 	final public static String TABULACION = "\t";

@@ -133,7 +133,10 @@ public class IMenu extends MyFrame {
 	}
 
 	public void ayuda() {
-		// TODO: Implementar ayuda
+		IAyuda pantallaAyuda = new IAyuda(this);
+		pantallaAyuda.setLocationRelativeTo(null);
+		pantallaAyuda.setVisible(true);
+		this.setVisible(false);
 	}
 
 	public void ingresarDatos() {

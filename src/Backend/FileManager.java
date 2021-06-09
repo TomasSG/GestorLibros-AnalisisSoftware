@@ -3,6 +3,7 @@ package Backend;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -96,6 +97,22 @@ public class FileManager {
 		salida.print(usuario.getNombre() + Constantes.PUNTO_COMA);
         salida.print(usuario.getContraseniaHash() + Constantes.PUNTO_COMA);
         salida.print(usuario.getSalt() + Constantes.NUEVA_LINEA);
+	}
+	
+	public ArrayList<String> leerArchivoAyuda(String path) throws FileNotFoundException {
+
+		// Variables que vamos a usar
+		ArrayList<String> ayuda = new ArrayList<String>();
+		Scanner entrada = new Scanner(new FileReader(path));
+		
+		while (entrada.hasNextLine()) {
+			ayuda.add(entrada.nextLine());
+		}
+		
+		// Cerrar el scanner
+		entrada.close();
+
+		return ayuda;
 	}
 
 }
