@@ -1,6 +1,6 @@
 package Backend;
 
-class Libro implements Comparable<Libro> {
+public class Libro implements Comparable<Libro> {
 
     private String isbn;
     private String titulo;

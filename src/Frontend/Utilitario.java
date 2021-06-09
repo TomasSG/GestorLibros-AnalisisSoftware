@@ -21,6 +21,7 @@ public class Utilitario {
 	public static final String MSJ_CERRAR_VENTANA = "¿Deseas cerrar la ventana?";
 	
 	public static final String MSJ_CAMPOS_VACIOS = "Todos los campos deben estar completos";
+	public static final String MSJ_LISTA_VACIA = "Parece que no hay registros aún";
 	
 	public static final String MSJ_CONTRASENIA_INVALIDA = "Contraseña Inválida";
 	public static final String MSJ_NO_COINCIDEN_CONTRASENIAS = "No coinciden las contraseñas ingresadas";
@@ -46,5 +47,8 @@ public class Utilitario {
 	public static final int LARGO_USUARIOS = 400;
 	public static final int ANCHO_LIBROS = 500;
 	public static final int LARGO_LIBROS = 500;
+	
+	// Campos Libros
+	public static final String[] CAMPOS_LIBROS = {"ISBN", "Titulo", "Autor", "Editorial", "Edicion", "Anio"};
 	
 }

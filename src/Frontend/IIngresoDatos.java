@@ -164,7 +164,7 @@ public class IIngresoDatos extends MyFrame {
 		} else if (opcion == 4) {
 			// pantalla = new IEliminarLibro(gl, this);
 		} else if (opcion == 5) {
-			// pantalla = new IListarLibros(gl, this);
+			pantalla = new IListarLibros(gl, this);
 		}
 
 		pantalla.setLocationRelativeTo(null);
