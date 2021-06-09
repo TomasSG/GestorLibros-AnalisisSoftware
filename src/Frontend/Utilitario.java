@@ -32,6 +32,7 @@ public class Utilitario {
 	
 	public static final String MSJ_LIBRO_EXISTE = "Ya existe el ISBN introducido";
 	public static final String MSJ_LIBRO_ERROR = "No se logro registrar el libro";
+	public static final String MSJ_LIBRO_NO_ENCONTRADO = "No se logro encontrar el libro solicitado";
 	
 	// Msjs de éxito
 	public static final String MSJ_USUARIO_REGISTRADO = "Usuario registrado exitosamente!";

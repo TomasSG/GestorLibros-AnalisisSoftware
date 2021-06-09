@@ -41,9 +41,7 @@ public class IIngresoDatos extends MyFrame {
 		MyLabel lblElegirOpcion = new MyLabel(":-:  Eija la opción deseada  :-:", Utilitario.FONT_TITULOS);
 
 		MyButton btnAltaLibro = new MyButton("Alta Libro");
-		MyButton btnConsultarLibro = new MyButton("Consultar Libro");
-		MyButton btnActualizarLibro = new MyButton("Actualizar Libro");
-		MyButton btnEliminarLibro = new MyButton("Eliminar Libro");
+		MyButton btnConsultarActualizarEliminarLibro = new MyButton("Consultar/Actualizar/Eliminar Libro");
 		MyButton btnOrdenarLibro = new MyButton("Ordenar Libros");
 		MyButton btnListarLibros = new MyButton("Listar Libros");
 		MyButton btnVoler = new MyButton("Volver");
@@ -63,20 +61,9 @@ public class IIngresoDatos extends MyFrame {
 		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 4, 2, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
-		anadirObjeto(btnConsultarLibro, contentPane, layout, gbc, 0, 5, 5, 1, GridBagConstraints.CENTER,
+		anadirObjeto(btnConsultarActualizarEliminarLibro, contentPane, layout, gbc, 0, 5, 5, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH);
 
-		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 6, 5, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-
-		anadirObjeto(btnActualizarLibro, contentPane, layout, gbc, 0, 7, 5, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH);
-
-		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 8, 5, 1, GridBagConstraints.PAGE_START,
-				GridBagConstraints.BOTH);
-
-		anadirObjeto(btnEliminarLibro, contentPane, layout, gbc, 0, 9, 5, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH);
 		anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 10, 5, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 
@@ -119,7 +106,7 @@ public class IIngresoDatos extends MyFrame {
 			}
 		});
 
-		btnConsultarLibro.addActionListener(new ActionListener() {
+		btnConsultarActualizarEliminarLibro.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -127,27 +114,11 @@ public class IIngresoDatos extends MyFrame {
 			}
 		});
 
-		btnActualizarLibro.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				abriraPantalla(3);
-			}
-		});
-
-		btnEliminarLibro.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				abriraPantalla(4);
-			}
-		});
-
 		btnListarLibros.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				abriraPantalla(5);
+				abriraPantalla(3);
 			}
 		});
 		
@@ -167,12 +138,8 @@ public class IIngresoDatos extends MyFrame {
 		if (opcion == 1) {
 			pantalla = new IAltaLibro(gl, this);
 		} else if (opcion == 2) {
-			// pantalla = new IConsultarLibro(gl, this);
+			pantalla = new IConsultarActualizarEliminarLibro(gl, this);
 		} else if (opcion == 3) {
-			// pantalla = new IActualizarLibro(gl, this);
-		} else if (opcion == 4) {
-			// pantalla = new IEliminarLibro(gl, this);
-		} else if (opcion == 5) {
 			pantalla = new IListarLibros(gl, this);
 		}
 

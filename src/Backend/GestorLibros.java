@@ -40,21 +40,10 @@ public class GestorLibros implements Gestor {
 	}
 
 	public Libro consultarLibro(String isbn) {
-
-		// Verificamos que el vector este vacío
-		if (this.libros.isEmpty()) {
+		if (!existeLibro(isbn)) {
 			return null;
 		}
-
-		// Buscamos el libro usando el ISBN.
-		int indice = this.libros.indexOf(new Libro(isbn));
-
-		// Verificamos la existencia del libro.
-		if (indice <= 0) {
-			return null;
-		}
-
-		return this.libros.get(indice);
+		return this.libros.get(this.libros.indexOf(new Libro(isbn)));
 
 	}
 
