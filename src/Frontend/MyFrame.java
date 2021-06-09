@@ -82,6 +82,10 @@ public class MyFrame extends JFrame {
 	protected boolean esContraseniaCorrecto(String contrasenia) {
 		return contrasenia.length() > 0;
 	}
+	
+	protected boolean esVacio(String cadena) {
+		return cadena.trim().isEmpty();
+	}
 
 	protected void cerrarVentana(Window w, Gestor g) {
 		try {

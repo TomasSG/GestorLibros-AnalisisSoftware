@@ -22,24 +22,20 @@ public class GestorLibros implements Gestor {
 	public void finalizar() throws FileNotFoundException {
 		fileManager.escribirArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS, libros);
 	} 
+	
+	public boolean existeLibro(String isbn) {
+		return !libros.isEmpty() && libros.contains(new Libro(isbn)); 
+	}
 
 	public boolean altaLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {
 
-		Libro libro = new Libro(isbn);
-
 		// Verificamos que no exista el libro
-		if (this.libros.indexOf(libro) >= 0) {
+		if (existeLibro(isbn)) {
 			return false;
 		}
 
-		libro.setTitulo(titulo);
-		libro.setAutor(autor);
-		libro.setEditorial(editorial);
-		libro.setEdicion(edicion);
-		libro.setAnioPublicacion(anioPublicacion);
-
-		this.libros.add(libro);
+		this.libros.add(new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
 		return true;
 	}
 

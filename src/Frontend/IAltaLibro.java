@@ -45,7 +45,7 @@ public class IAltaLibro extends MyFrame {
 
 		this.gl = gl;
 		this.padre = padre;
-		
+
 		// Para solo aceptar nros como input
 		MyNumberFormatter formatter = new MyNumberFormatter(NumberFormat.getIntegerInstance());
 		formatter.setValueClass(Long.class);
@@ -157,20 +157,45 @@ public class IAltaLibro extends MyFrame {
 				volver(padre);
 			}
 		});
-		
+
 		btnAnadir.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				registrar();
 			}
 		});
-		
+
 	}
-	
+
 	public void registrar() {
+
+		String isbn = txtIsbn.getText();
+		String titulo = txtTitluoLibro.getText();
+		String autor = txtAutorLibro.getText();
+		String editorial = txtEditorialLibro.getText();
+
+		if (esVacio(isbn) || esVacio(titulo) || esVacio(autor) || esVacio(editorial)
+				|| txtEdicionLibro.getValue() == null || txtEdicionLibro.getValue() == null) {
+			mensajeError(Utilitario.MSJ_CAMPOS_VACIOS);
+			return;
+		}
 		
-		
-		
+		int edicion = ((Number)txtEdicionLibro.getValue()).intValue();
+		int anioPublicacion = ((Number)txtEdicionLibro.getValue()).intValue();
+
+		if (gl.existeLibro(isbn)) {
+			mensajeError(Utilitario.MSJ_LIBRO_EXISTE);
+			return;
+		}
+
+		if (gl.altaLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion)) {
+			mensajeExito(Utilitario.MSJ_LIBRO_REGISTRADO);
+			return;
+		} else {
+			mensajeError(Utilitario.MSJ_LIBRO_ERROR);
+			return;
+		}
+
 	}
 }
