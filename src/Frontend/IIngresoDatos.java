@@ -150,6 +150,15 @@ public class IIngresoDatos extends MyFrame {
 				abriraPantalla(5);
 			}
 		});
+		
+		btnOrdenarLibro.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gl.ordenarLibros();
+				mensajeExito(Utilitario.MSJ_LIBROS_ORDENADOS);
+			}
+		});
 	}
 
 	public void abriraPantalla(int opcion) {

@@ -36,6 +36,7 @@ public class Utilitario {
 	// Msjs de éxito
 	public static final String MSJ_USUARIO_REGISTRADO = "Usuario registrado exitosamente!";
 	public static final String MSJ_LIBRO_REGISTRADO = "Libro registrado exitosamente!";
+	public static final String MSJ_LIBROS_ORDENADOS = "Libros ordenados exitosamente!";
 	
 	
 	// Fonts
