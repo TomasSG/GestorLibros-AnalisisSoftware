@@ -31,14 +31,15 @@ public class Utilitario {
 	public static final String MSJ_NO_EXISTE_USUARIO = "No existe el usuario ingresado";
 	
 	public static final String MSJ_LIBRO_EXISTE = "Ya existe el ISBN introducido";
-	public static final String MSJ_LIBRO_ERROR = "No se logro registrar el libro";
+	public static final String MSJ_LIBRO_REGISTRAR_ERROR = "No se logro registrar el libro";
+	public static final String MSJ_LIBRO_ACTUALIZAR_ERROR = "No se logro actualizar el libro";
 	public static final String MSJ_LIBRO_NO_ENCONTRADO = "No se logro encontrar el libro solicitado";
 	
 	// Msjs de éxito
 	public static final String MSJ_USUARIO_REGISTRADO = "Usuario registrado exitosamente!";
 	public static final String MSJ_LIBRO_REGISTRADO = "Libro registrado exitosamente!";
 	public static final String MSJ_LIBROS_ORDENADOS = "Libros ordenados exitosamente!";
-	
+	public static final String MSJ_LIBRO_ACTUALIZADO = "Libro actualizado exitosamente!";
 	
 	// Fonts
 	public static final Font FONT_TITULOS = new Font("Arial", Font.BOLD, 24);

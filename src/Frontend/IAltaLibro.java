@@ -176,13 +176,13 @@ public class IAltaLibro extends MyFrame {
 		String editorial = txtEditorialLibro.getText();
 
 		if (esVacio(isbn) || esVacio(titulo) || esVacio(autor) || esVacio(editorial)
-				|| txtEdicionLibro.getValue() == null || txtEdicionLibro.getValue() == null) {
+				|| txtEdicionLibro.getValue() == null || txtAnioLibro.getValue() == null) {
 			mensajeError(Utilitario.MSJ_CAMPOS_VACIOS);
 			return;
 		}
 		
 		int edicion = ((Number)txtEdicionLibro.getValue()).intValue();
-		int anioPublicacion = ((Number)txtEdicionLibro.getValue()).intValue();
+		int anioPublicacion = ((Number)txtAnioLibro.getValue()).intValue();
 
 		if (gl.existeLibro(isbn)) {
 			mensajeError(Utilitario.MSJ_LIBRO_EXISTE);
@@ -193,7 +193,7 @@ public class IAltaLibro extends MyFrame {
 			mensajeExito(Utilitario.MSJ_LIBRO_REGISTRADO);
 			return;
 		} else {
-			mensajeError(Utilitario.MSJ_LIBRO_ERROR);
+			mensajeError(Utilitario.MSJ_LIBRO_REGISTRAR_ERROR);
 			return;
 		}
 

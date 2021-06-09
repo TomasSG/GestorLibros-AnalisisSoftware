@@ -51,19 +51,12 @@ public class GestorLibros implements Gestor {
 	public boolean actualizarLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {
 
-		// Verificamos que el vector este vacío
-		if (this.libros.isEmpty()) {
+		// Verificamos la existencia
+		if (!existeLibro(isbn)) {
 			return false;
 		}
 
-		// Buscamos el libro usando el ISBN.
-		Libro libro = new Libro(isbn);
-		int indice = this.libros.indexOf(libro);
-
-		// Verificamos la existencia del libro
-		if (indice < 0) {
-			return false;
-		}
+		Libro libro = libros.get(libros.indexOf(new Libro(isbn)));
 
 		// Como existe el libro volcamos los datos en un nuevo objeto
 		libro.setTitulo(titulo);
@@ -71,10 +64,6 @@ public class GestorLibros implements Gestor {
 		libro.setEditorial(editorial);
 		libro.setEdicion(edicion);
 		libro.setAnioPublicacion(anioPublicacion);
-
-		// Borramos el registro previo e ingresamos el nuevo
-		this.libros.remove(indice);
-		this.libros.add(libro);
 
 		return true;
 	}
