@@ -42,9 +42,7 @@ public class IRegistrarUsuario extends JFrame {
 	private GestorUsuarios app;
 	private IIniciarSesion padre;
 
-	/**
-	 * Create the frame.
-	 */
+
 	public IRegistrarUsuario(GestorUsuarios app, IIniciarSesion padre) {
 
 		this.app = app;
@@ -64,23 +62,12 @@ public class IRegistrarUsuario extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(layout);
 		setContentPane(contentPane);
-
-		JLabel lblRegistrarUsuario = new JLabel("Registrar Usuario");
-		lblRegistrarUsuario.setFont(new Font("Arial", Font.BOLD, 24));
-		lblRegistrarUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JLabel lblNombreUsuario = new JLabel("Nombre Usuario: ");
-		lblNombreUsuario.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblNombreUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNombreUsuario.setBounds(308, 16, 130, 30);
-
-		JLabel lblContraseña = new JLabel("Contrasenia: ");
-		lblContraseña.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblContraseña.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JLabel lblContraseñaRepetida = new JLabel("Repita Contrasenia: ");
-		lblContraseñaRepetida.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblContraseñaRepetida.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		// Elementos
+		MyLabel lblRegistrarUsuario = new MyLabel("Registrar Usuario", Utilitario.FONT_TITULOS);
+		MyLabel lblNombreUsuario = new MyLabel("Nombre Usuario: ", Utilitario.FONT_CAMPOS);
+		MyLabel lblContraseña = new MyLabel("Contrasenia: ", Utilitario.FONT_CAMPOS);
+		JLabel lblContraseñaRepetida = new MyLabel("Repita Contrasenia: ", Utilitario.FONT_CAMPOS);
 
 		txtContrasenia = new JPasswordField(10);
 		txtContrasenia.setText("");
@@ -88,14 +75,10 @@ public class IRegistrarUsuario extends JFrame {
 		txtContraseniaRepetida.setText("");
 		txtNombreUsuario = new JTextField("");
 
-		JButton btnVolver = new JButton("Vovler");
-		btnVolver.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnVolver.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnRegistrarse.setHorizontalAlignment(SwingConstants.CENTER);
-
+		MyButton btnVolver = new MyButton("Vovler");
+		MyButton btnRegistrarse = new MyButton("Registrarse");
+	
+		// Posición de objetos
 		Utilitario.anadirObjeto(lblRegistrarUsuario, contentPane, layout, gbc, 0, 0, 5, 1,
 				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 

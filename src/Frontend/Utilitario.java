@@ -2,6 +2,7 @@ package Frontend;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -26,6 +27,10 @@ public class Utilitario {
 	
 	// Msjs de éxito
 	public static final String MSJ_USUARIO_REGISTRADO = "Usuario registrado exitosamente!";
+	
+	// Fonts
+	public static final Font FONT_TITULOS = new Font("Arial", Font.BOLD, 24);
+	public static final Font FONT_CAMPOS = new Font("Arial", Font.PLAIN, 17);
 	
 	
 	public static void anadirObjeto(Component componente, Container container, GridBagLayout layout, GridBagConstraints gbc,

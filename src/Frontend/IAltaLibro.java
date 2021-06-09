@@ -62,62 +62,23 @@ public class IAltaLibro extends JFrame {
 		setContentPane(contentPane);
 
 		// Elementos
-		JLabel lblTitulo = new JLabel(":-: ALTA LIBRO :-:");
-		lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JLabel lblElegirOpcion = new JLabel(":-:  COMPLETE LOS CAMPOS  :-:");
-		lblElegirOpcion.setFont(new Font("Arial", Font.BOLD, 24));
-		lblElegirOpcion.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnVoler = new JButton("Volver");
-		btnVoler.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnVoler.setHorizontalAlignment(SwingConstants.CENTER);
+		MyLabel lblTitulo = new MyLabel(":-: ALTA LIBRO :-:", Utilitario.FONT_TITULOS);
+		MyLabel lblElegirOpcion = new MyLabel(":-:  COMPLETE LOS CAMPOS  :-:", Utilitario.FONT_TITULOS);
+		MyLabel lblIsbn = new MyLabel("ISBN: ", Utilitario.FONT_CAMPOS);
+		MyLabel lblTituloLibro = new MyLabel("Título: ", Utilitario.FONT_CAMPOS);
+		MyLabel lblAutorLibro = new MyLabel("Autor: ", Utilitario.FONT_CAMPOS);
+		MyLabel lblEditorialLibro = new MyLabel("Editorial: ", Utilitario.FONT_CAMPOS);
+		MyLabel lblEdicionLibro = new MyLabel("Edicion: ", Utilitario.FONT_CAMPOS);
+		MyLabel lblAnioLibro = new MyLabel("Año Publicación: ", Utilitario.FONT_CAMPOS);
 		
-		JButton btnAnadir = new JButton("Añadir");
-		btnAnadir.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnAnadir.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JLabel lblIsbn = new JLabel("ISBN: ");
-		lblIsbn.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblIsbn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIsbn.setBounds(308, 16, 130, 30);
-		
+		MyButton btnVoler = new MyButton("Volver");
+		MyButton btnAnadir = new MyButton("Añadir");
+	
 		txtIsbn = new JTextField("");
-		
-		JLabel lblTituloLibro = new JLabel("Título: ");
-		lblTituloLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblTituloLibro.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTituloLibro.setBounds(308, 16, 130, 30);
-		
 		txtTitluoLibro = new JTextField("");
-		
-		JLabel lblAutorLibro = new JLabel("Autor: ");
-		lblAutorLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblAutorLibro.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAutorLibro.setBounds(308, 16, 130, 30);
-		
 		txtAutorLibro = new JTextField("");
-		
-		JLabel lblEditorialLibro = new JLabel("Editorial: ");
-		lblEditorialLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblEditorialLibro.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEditorialLibro.setBounds(308, 16, 130, 30);
-		
 		txtEditorialLibro = new JTextField("");
-		
-		JLabel lblEdicionLibro = new JLabel("Edicion: ");
-		lblEditorialLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblEditorialLibro.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEditorialLibro.setBounds(308, 16, 130, 30);
-		
 		txtEdicionLibro = new JTextField("");
-		
-		JLabel lblAnioLibro = new JLabel("Año Publicación: ");
-		lblEditorialLibro.setFont(new Font("Arial", Font.PLAIN, 1));
-		lblEditorialLibro.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEditorialLibro.setBounds(308, 16, 130, 30);
-		
 		txtAnioLibro = new JTextField("");
 		
 
@@ -166,7 +127,7 @@ public class IAltaLibro extends JFrame {
 		Utilitario.anadirObjeto(Box.createVerticalStrut(10), contentPane, layout, gbc, 0, 10, 5, 1,
 				GridBagConstraints.PAGE_START, GridBagConstraints.BOTH);
 
-		Utilitario.anadirObjeto(lblEdicionLibro, contentPane, layout, gbc, 0, 11, 2, 1, GridBagConstraints.PAGE_START,
+		Utilitario.anadirObjeto(lblEdicionLibro, contentPane, layout, gbc, 0, 11, 3, 1, GridBagConstraints.PAGE_START,
 				GridBagConstraints.BOTH);
 		
 		Utilitario.anadirObjeto(txtEdicionLibro, contentPane, layout, gbc, 3, 11, 2, 1, GridBagConstraints.PAGE_START,

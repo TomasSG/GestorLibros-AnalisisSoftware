@@ -55,41 +55,17 @@ public class IIngresoDatos extends JFrame {
 		setContentPane(contentPane);
 
 		// Elementos
-		JLabel lblTitulo = new JLabel(":-: CENTRO GESTIÓN DE LIBROS :-:");
-		lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		MyLabel lblTitulo = new MyLabel(":-: CENTRO GESTIÓN DE LIBROS :-:", Utilitario.FONT_TITULOS);
+		MyLabel lblElegirOpcion = new MyLabel(":-:  Eija la opción deseada  :-:", Utilitario.FONT_TITULOS);
 
-		JLabel lblElegirOpcion = new JLabel(":-:  Eija la opción deseada  :-:");
-		lblElegirOpcion.setFont(new Font("Arial", Font.BOLD, 24));
-		lblElegirOpcion.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnAltaLibro = new JButton("Alta Libro");
-		btnAltaLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnAltaLibro.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnConsultarLibro = new JButton("Consultar Libro");
-		btnConsultarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnConsultarLibro.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnActualizarLibro = new JButton("Actualizar Libro");
-		btnActualizarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnActualizarLibro.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnEliminarLibro = new JButton("Eliminar Libro");
-		btnEliminarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnEliminarLibro.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnOrdenarLibro = new JButton("Ordenar Libros");
-		btnOrdenarLibro.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnOrdenarLibro.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnListarLibros = new JButton("Listar Libros");
-		btnListarLibros.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnListarLibros.setHorizontalAlignment(SwingConstants.CENTER);
-
-		JButton btnVoler = new JButton("Volver");
-		btnVoler.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnVoler.setHorizontalAlignment(SwingConstants.CENTER);
+		MyButton btnAltaLibro = new MyButton("Alta Libro");
+		MyButton btnConsultarLibro = new MyButton("Consultar Libro");
+		MyButton btnActualizarLibro = new MyButton("Actualizar Libro");
+		MyButton btnEliminarLibro = new MyButton("Eliminar Libro");
+		MyButton btnOrdenarLibro = new MyButton("Ordenar Libros");
+		MyButton btnListarLibros = new MyButton("Listar Libros");
+		MyButton btnVoler = new MyButton("Volver");
+	
 		
 		
 

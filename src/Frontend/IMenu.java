@@ -82,25 +82,13 @@ public class IMenu extends JFrame {
 		
 		
 		// Elementos
-		JLabel lblTitulo = new JLabel(":-: CENTRO GESTIÓN DE LIBROS :-:");
-		lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);	
+		MyLabel lblTitulo = new MyLabel(":-: CENTRO GESTIÓN DE LIBROS :-:", Utilitario.FONT_TITULOS);	
+		MyLabel lblElegirOpcion = new MyLabel(":-:  Eija la opción deseada  :-:", Utilitario.FONT_TITULOS);
 		
-		JLabel lblElegirOpcion = new JLabel(":-:  Eija la opción deseada  :-:");
-		lblElegirOpcion.setFont(new Font("Arial", Font.BOLD, 24));
-		lblElegirOpcion.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JButton btnIngresoDatos = new JButton("Ingreso de Datos");
-		btnIngresoDatos.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnIngresoDatos.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JButton btnAyuda = new JButton("Ayuda");
-		btnAyuda.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnAyuda.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnSalir.setHorizontalAlignment(SwingConstants.CENTER);
+		MyButton btnIngresoDatos = new MyButton("Ingreso de Datos");		
+		MyButton btnAyuda = new MyButton("Ayuda");
+		MyButton btnSalir = new MyButton("Salir");
+	
 
 		
 		// Disponer elementos 
