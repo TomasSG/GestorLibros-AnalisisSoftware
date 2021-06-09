@@ -176,8 +176,24 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 				actualizarLibro();
 			}
 		});
-		
+
+		btnEliminar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				eliminarLibro();
+
+			}
+		});
+
 		consultarLibro(comboIsbn.getItemAt(0).toString());
+	}
+
+	protected void eliminarLibro() {
+
+		gl.eliminarLibro(comboIsbn.getSelectedItem().toString());
+		mensajeExito(Utilitario.MSJ_LIBRO_BORRADO);
+		volver(padre);
 	}
 
 	protected void actualizarLibro() {
@@ -197,6 +213,7 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 
 		if (gl.actualizarLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion)) {
 			mensajeExito(Utilitario.MSJ_LIBRO_ACTUALIZADO);
+			volver(padre);
 		} else {
 			mensajeError(Utilitario.MSJ_LIBRO_ACTUALIZAR_ERROR);
 		}

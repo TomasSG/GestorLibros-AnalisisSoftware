@@ -40,6 +40,7 @@ public class Utilitario {
 	public static final String MSJ_LIBRO_REGISTRADO = "Libro registrado exitosamente!";
 	public static final String MSJ_LIBROS_ORDENADOS = "Libros ordenados exitosamente!";
 	public static final String MSJ_LIBRO_ACTUALIZADO = "Libro actualizado exitosamente!";
+	public static final String MSJ_LIBRO_BORRADO = "Libro eleminado exitosamente!";
 	
 	// Fonts
 	public static final Font FONT_TITULOS = new Font("Arial", Font.BOLD, 24);
