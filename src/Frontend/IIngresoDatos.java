@@ -127,6 +127,7 @@ public class IIngresoDatos extends MyFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gl.ordenarLibros();
+				gl.registrarLog("Libros ordenados");
 				mensajeExito(Utilitario.MSJ_LIBROS_ORDENADOS);
 			}
 		});

@@ -14,6 +14,7 @@ import javax.swing.Box;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -190,8 +191,13 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 	}
 
 	protected void eliminarLibro() {
-
+		
+		if(mensajeRealizarOperacion() == JOptionPane.NO_OPTION) {
+			return;
+		}
+		
 		gl.eliminarLibro(comboIsbn.getSelectedItem().toString());
+		gl.registrarLog("Libro Eliminado: " + comboIsbn.getSelectedItem().toString());
 		mensajeExito(Utilitario.MSJ_LIBRO_BORRADO);
 		volver(padre);
 	}
@@ -213,6 +219,7 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 
 		if (gl.actualizarLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion)) {
 			mensajeExito(Utilitario.MSJ_LIBRO_ACTUALIZADO);
+			gl.registrarLog("Libro Actualizado: " + new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
 			volver(padre);
 		} else {
 			mensajeError(Utilitario.MSJ_LIBRO_ACTUALIZAR_ERROR);

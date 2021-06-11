@@ -1,0 +1,9 @@
+[2021-06-11 00:33:09] Inicio Sesión de tomas
+[2021-06-11 00:36:37] Inicio Sesión de tomas
+[2021-06-11 00:36:57] Alta Libro: Libro [isbn=123, titulo=No, autor=Falso, editorial=No, edicion=12, anioPublicacion=2020]
+[2021-06-11 00:38:59] Usuario Registrado t
+[2021-06-11 00:39:02] Inicio Sesión de t
+[2021-06-11 00:39:11] Alta Libro: Libro [isbn=6, titulo=as, autor=as, editorial=as, edicion=2, anioPublicacion=2]
+[2021-06-11 00:39:14] Libros ordenados
+[2021-06-11 00:39:24] Libro Actualizado: Libro [isbn=65, titulo=Libro4, autor=Hernan, editorial=Verdadera, edicion=2, anioPublicacion=2012]
+[2021-06-11 00:39:30] Libro Eliminado: 6

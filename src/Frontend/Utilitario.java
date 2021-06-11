@@ -14,6 +14,7 @@ public class Utilitario {
 	public static final String TITULO_CERRAR_VENTANA = "Cerrar Ventana";
 	public static final String TITULO_ERROR = "Error";
 	public static final String TITULO_EXITO = "Operación Completada Exitosamente";
+	public static final String TITULO_REALIZAR_OPERACION = "Confirmación Operación";
 	
 	// Msj de errores
 	public static final String MSJ_ERROR_BD = "No se logro acceder a la base datos";
@@ -41,6 +42,9 @@ public class Utilitario {
 	public static final String MSJ_LIBROS_ORDENADOS = "Libros ordenados exitosamente!";
 	public static final String MSJ_LIBRO_ACTUALIZADO = "Libro actualizado exitosamente!";
 	public static final String MSJ_LIBRO_BORRADO = "Libro eleminado exitosamente!";
+	
+	// Msjs confirmación
+	public static final String MSJ_REALIZAR_OPERACION = "¿Estás seguro que deseas realizar la operación?";
 	
 	// Fonts
 	public static final Font FONT_TITULOS = new Font("Arial", Font.BOLD, 24);

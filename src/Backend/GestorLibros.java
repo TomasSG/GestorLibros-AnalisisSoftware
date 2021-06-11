@@ -85,4 +85,9 @@ public class GestorLibros implements Gestor {
 	public Vector<Libro> listarLibros() {
 		return this.libros;
 	}
+
+	@Override
+	public void registrarLog(String detalle) {
+		fileManager.anadirRegistroLog(Constantes.PATH_LOG, detalle);
+	}
 }

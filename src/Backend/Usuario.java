@@ -52,4 +52,8 @@ public class Usuario implements Comparable<Usuario>{
         return this==u || (u instanceof Usuario && this.nombre.equals(((Usuario)u).nombre));
     }
 
+	@Override
+	public String toString() {
+		return "Usuario [nombre=" + nombre + "]";
+	}
 }

@@ -158,6 +158,8 @@ public class IIniciarSesion extends MyFrame {
 			mensajeError(Utilitario.MSJ_CONTRASENIA_ERRONEA);
 			return;
 		}
+		
+		gu.registrarLog("Inicio Sesión de " + nombre);
 
 		IMenu pantallaMenu = new IMenu();
 		pantallaMenu.setLocationRelativeTo(null);

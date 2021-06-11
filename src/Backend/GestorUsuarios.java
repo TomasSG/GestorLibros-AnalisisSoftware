@@ -64,4 +64,9 @@ public class GestorUsuarios implements Gestor{
 		
 		return true;
 	}
+
+	@Override
+	public void registrarLog(String detalle) {
+		fileManager.anadirRegistroLog(Constantes.PATH_LOG, detalle);
+	}
 }

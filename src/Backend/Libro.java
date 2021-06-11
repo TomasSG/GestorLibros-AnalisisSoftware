@@ -51,22 +51,16 @@ public class Libro implements Comparable<Libro> {
         return this.isbn.compareTo(libro.isbn);
     }
     
-   /* PARA IMPRIMIR POR CONSOLA*/
-    
     @Override
-    public String toString() {
-        return
-            "isbn               : " + this.isbn + "\n" +
-            "titulo             : " + this.titulo + "\n" +
-            "autor              : " + this.autor + "\n" +
-            "editorial          : " + this.editorial + "\n" +
-            "edicion            : " + this.edicion + "\n" +
-            "anio de publicacion: " + this.anioPublicacion + "\n";
-    }
+	public String toString() {
+		return "Libro [isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", editorial=" + editorial
+				+ ", edicion=" + edicion + ", anioPublicacion=" + anioPublicacion + "]";
+	}
+
 
     /* SECCIÓN GETTERS Y SETTERS */
     
-    public String getIsbn() {
+	public String getIsbn() {
 		return this.isbn;
 	}
     

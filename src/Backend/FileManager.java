@@ -1,9 +1,15 @@
 package Backend;
 
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -113,6 +119,19 @@ public class FileManager {
 		entrada.close();
 
 		return ayuda;
+	}
+	
+	public void anadirRegistroLog(String path, String linea) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date ahora = new Date();
+		try {
+			FileWriter fw = new FileWriter(path, true);
+			fw.write("[" + format.format(ahora) + "] " + linea + "\n");
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

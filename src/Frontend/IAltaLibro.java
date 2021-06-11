@@ -26,6 +26,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.NumberFormatter;
 
 import Backend.GestorLibros;
+import Backend.Libro;
 
 public class IAltaLibro extends MyFrame {
 
@@ -191,6 +192,7 @@ public class IAltaLibro extends MyFrame {
 
 		if (gl.altaLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion)) {
 			mensajeExito(Utilitario.MSJ_LIBRO_REGISTRADO);
+			gl.registrarLog("Alta Libro: " + new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
 			return;
 		} else {
 			mensajeError(Utilitario.MSJ_LIBRO_REGISTRAR_ERROR);

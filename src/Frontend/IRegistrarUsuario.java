@@ -154,6 +154,7 @@ public class IRegistrarUsuario extends MyFrame {
 			return;
 		} else {
 			mensajeExito(Utilitario.MSJ_USUARIO_REGISTRADO);
+			app.registrarLog("Usuario Registrado " + txtNombreUsuario.getText());
 			return;
 		}
 

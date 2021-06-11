@@ -64,6 +64,11 @@ public class MyFrame extends JFrame {
 		return JOptionPane.showConfirmDialog(null, Utilitario.MSJ_CERRAR_VENTANA, Utilitario.TITULO_CERRAR_VENTANA,
 				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 	}
+	
+	protected int mensajeRealizarOperacion() {
+		return JOptionPane.showConfirmDialog(null, Utilitario.MSJ_REALIZAR_OPERACION, Utilitario.TITULO_REALIZAR_OPERACION,
+				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+	}
 
 	protected int mensajeError(String msj) {
 		return JOptionPane.showConfirmDialog(null, msj, Utilitario.TITULO_ERROR, JOptionPane.CLOSED_OPTION,
