@@ -22,13 +22,11 @@ import Backend.Libro;
 public class IListarLibros extends MyFrame {
 
 	private GestorLibros gl;
-	private JFrame padre;
 
 	public IListarLibros(GestorLibros gl, JFrame padre) {
 		super(Utilitario.ANCHO_LIBROS, 700);
 
 		this.gl = gl;
-		this.padre = padre;
 
 		// Elemetos
 		MyLabel lblTitulo = new MyLabel(":-: LISTA DE LIBROS REGISTRADOS :-:", Utilitario.FONT_TITULOS);

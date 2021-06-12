@@ -1,31 +1,18 @@
 package Frontend;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.Box;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
 import Backend.Constantes;
-import Backend.GestorLibros;
 import Backend.GestorUsuarios;
 import Backend.Usuario;
 
@@ -38,7 +25,6 @@ public class IRegistrarUsuario extends MyFrame {
 
 	private GestorUsuarios app;
 	private JFrame padre;
-
 
 	public IRegistrarUsuario(GestorUsuarios app,  JFrame padre) {
 		
@@ -155,6 +141,7 @@ public class IRegistrarUsuario extends MyFrame {
 		} else {
 			mensajeExito(Utilitario.MSJ_USUARIO_REGISTRADO);
 			app.registrarLog("Usuario Registrado " + txtNombreUsuario.getText());
+			volver(padre);
 			return;
 		}
 

@@ -1,12 +1,6 @@
 package Frontend;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -14,17 +8,9 @@ import java.awt.event.WindowEvent;
 import java.text.NumberFormat;
 
 import javax.swing.Box;
-import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.text.NumberFormatter;
-
 import Backend.GestorLibros;
 import Backend.Libro;
 
@@ -38,14 +24,12 @@ public class IAltaLibro extends MyFrame {
 	private JTextField txtTitluoLibro;
 
 	private GestorLibros gl;
-	private JFrame padre;
 
 	public IAltaLibro(GestorLibros gl, JFrame padre) {
 
 		super(Utilitario.ANCHO_LIBROS, Utilitario.LARGO_LIBROS);
 
 		this.gl = gl;
-		this.padre = padre;
 
 		// Para solo aceptar nros como input
 		MyNumberFormatter formatter = new MyNumberFormatter(NumberFormat.getIntegerInstance());
