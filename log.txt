@@ -13,3 +13,5 @@
 [2021-06-12 00:13:36] Inicio Sesión de 3
 [2021-06-12 00:13:46] Libros ordenados
 [2021-06-12 13:57:16] Inicio Sesión de 1
+[2021-06-12 14:18:41] Inicio Sesión de 1
+[2021-06-12 14:19:22] Alta Libro: Libro [isbn=123-22-12345-22-1, titulo=a, autor=A, editorial=A, edicion=2, anioPublicacion=123]
