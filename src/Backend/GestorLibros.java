@@ -15,27 +15,77 @@ public class GestorLibros implements Gestor {
 		this.fileManager = new FileManager();
 	}
 
-	public void iniciar() throws FileNotFoundException {
+	public void iniciar() throws FileNotFoundException{
 		libros = fileManager.leerArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS);
 	}
 
-	public void finalizar() throws FileNotFoundException {
+	public void finalizar() throws IOException {
 		fileManager.escribirArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS, libros);
-	} 
-	
+	}
+
 	public boolean existeLibro(String isbn) {
-		return !libros.isEmpty() && libros.contains(new Libro(isbn)); 
+		return !libros.isEmpty() && libros.contains(new Libro(isbn));
+	}
+
+	public boolean esIsbn(String isbn) {
+		String[] split = isbn.split("-");
+		if (isbn.length() != 17 || split.length != 5) {
+			return false;
+		}
+
+		for (int i = 0; i < 5; i++) {
+			if (!split[i].matches("^[0-9]*$")) {
+				return false;
+			}
+		}
+
+		if (split[0].length() != 3 || split[1].length() != 2 || split[2].length() != 5 || split[3].length() != 2
+				|| split[4].length() != 1) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean esTexto(String texto) {
+		if (texto.trim().length() > 50 || texto.trim().equals("")) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public boolean altaLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {
 
-		// Verificamos que no exista el libro
-		if (existeLibro(isbn)) {
+		// Validacion de que sea un ISBN válido
+		if (!esIsbn(isbn)) {
+			// Indicamos que no se completo la operacion
 			return false;
 		}
 
+		// Validacion de que los campos de texto sean válidos
+		if (!esTexto(titulo) || !esTexto(autor) || !esTexto(editorial)) {
+			// Indicamos que no se completo la operacion
+			return false;
+		}
+
+		// Validacion de que los campos numericos sean válidos
+		if (edicion <= 0 || anioPublicacion <= 0) {
+			// Indicamos que no se completo la operacion
+			return false;
+		}
+
+		// Validacion de que no exista previamente el libro
+		if (existeLibro(isbn)) {
+			// Indicamos que no se completo la operacion
+			return false;
+		}
+
+		// Creamos el libro con los datos previamente vlidados
 		this.libros.add(new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
+		
+		// Retornamos true indicando el éxito de la operacion
 		return true;
 	}
 
@@ -46,7 +96,6 @@ public class GestorLibros implements Gestor {
 		return this.libros.get(this.libros.indexOf(new Libro(isbn)));
 
 	}
-
 
 	public boolean actualizarLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {

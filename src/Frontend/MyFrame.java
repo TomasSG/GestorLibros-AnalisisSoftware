@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Window;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -94,8 +95,8 @@ public class MyFrame extends JFrame {
 
 	protected void cerrarVentana(Window w, Gestor g) {
 		try {
-			g.finalizar();
-		} catch (FileNotFoundException e) {
+			g.finalizar();	
+		} catch (IOException e) {
 			mensajeError(Utilitario.MSJ_ERROR_BD);
 			w.dispose();
 		}

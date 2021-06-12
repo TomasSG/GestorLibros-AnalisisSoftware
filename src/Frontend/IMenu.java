@@ -35,10 +35,11 @@ public class IMenu extends MyFrame {
 		gl = new GestorLibros();
 		try {
 			gl.iniciar();
-		} catch (FileNotFoundException e) {
-			mensajeError(Utilitario.MSJ_ERROR_BD);
-			this.dispose();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		
 
 		// Elementos
 		MyLabel lblTitulo = new MyLabel(":-: CENTRO GESTIÓN DE LIBROS :-:", Utilitario.FONT_TITULOS);

@@ -1,6 +1,7 @@
 package Backend;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Vector;
 
 public class GestorUsuarios implements Gestor{
@@ -15,11 +16,11 @@ public class GestorUsuarios implements Gestor{
 		this.fileManager = new FileManager();
 	}
 	
-	public void iniciar() throws FileNotFoundException {
+	public void iniciar() throws FileNotFoundException{
 		usuarios = fileManager.leerArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS);
 	}
 	
-	public void finalizar() throws FileNotFoundException {
+	public void finalizar() throws IOException {
 		fileManager.escribirArchivoUsuarios(Constantes.PATH_BASE_DATOS_USUARIOS, usuarios);
 	}
 
@@ -28,10 +29,13 @@ public class GestorUsuarios implements Gestor{
 	}
 
 	public boolean existeUsuario(Usuario usuario) {
-
+		
+		// Se verifica de que no este vacia la lsita y que contenga al usuario.
 		if (usuarios.isEmpty() || !usuarios.contains(usuario)) {
+			// Se retorna falso porque no existe el usuario
 			return false;
 		}
+		// Si no es verdadero
 		return true;
 	}
 	
@@ -46,10 +50,14 @@ public class GestorUsuarios implements Gestor{
 	}
 
 	public boolean registrarUsuario(Usuario usuario) {		
+		// Se verifica la existencia del usuario
 		if (existeUsuario(usuario)) {
+			// Como existe se retorna falso
 			return false;
 		}
+		// Si no existe se lo añade a la lsita
 		usuarios.add(usuario);
+		// Se retorna true porque se completo la operación
 		return true;
 	}
 	

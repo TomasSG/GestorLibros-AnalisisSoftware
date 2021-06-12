@@ -55,12 +55,11 @@ public class IIniciarSesion extends MyFrame {
 		super(Utilitario.ANCHO_USUARIOS, Utilitario.LARGO_USUARIOS);
 
 		gu = new GestorUsuarios();
-
 		try {
 			gu.iniciar();
 		} catch (FileNotFoundException e1) {
-			mensajeError(Utilitario.MSJ_ERROR_BD);
-			this.dispose();
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 		// Elementos del a GUI
