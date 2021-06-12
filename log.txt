@@ -15,3 +15,14 @@
 [2021-06-12 13:57:16] Inicio Sesión de 1
 [2021-06-12 14:18:41] Inicio Sesión de 1
 [2021-06-12 14:19:22] Alta Libro: Libro [isbn=123-22-12345-22-1, titulo=a, autor=A, editorial=A, edicion=2, anioPublicacion=123]
+[2021-06-12 17:57:47] Inicio Sesión de 1
+[2021-06-12 17:59:43] Alta Libro: Libro [isbn=178-92-95055-02-5, titulo=A, autor=A, editorial=A, edicion=1, anioPublicacion=2012]
+[2021-06-12 18:40:37] Inicio Sesión de 1
+[2021-06-12 18:40:58] Alta Libro: Libro [isbn=178-92-95055-20-5, titulo=A, autor=A, editorial=A, edicion=1, anioPublicacion=2012]
+[2021-06-12 18:57:15] Inicio Sesión de 1
+[2021-06-12 18:58:39] Alta Libro: Libro [isbn=178-92-95055-20-4, titulo=A, autor=A, editorial=A, edicion=21, anioPublicacion=1]
+[2021-06-12 19:00:05] Inicio Sesión de 1
+[2021-06-12 19:00:24] Inicio Sesión de 1
+[2021-06-12 19:01:10] Inicio Sesión de 1
+[2021-06-12 19:01:39] Inicio Sesión de 1
+[2021-06-12 19:01:56] Alta Libro: Libro [isbn=123-12-12345-12-1, titulo=a a, autor=a, editorial=2, edicion=2, anioPublicacion=2]

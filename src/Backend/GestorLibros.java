@@ -15,7 +15,7 @@ public class GestorLibros implements Gestor {
 		this.fileManager = new FileManager();
 	}
 
-	public void iniciar() throws FileNotFoundException{
+	public void iniciar() throws FileNotFoundException {
 		libros = fileManager.leerArchivoLibros(Constantes.PATH_BASE_DATOS_LIBROS);
 	}
 
@@ -48,11 +48,23 @@ public class GestorLibros implements Gestor {
 	}
 
 	public boolean esTexto(String texto) {
-		if (texto.trim().length() > 50 || texto.trim().equals("")) {
+		if (texto.trim().length() > 50 || texto.trim().equals("") || !texto.trim().matches("^[a-zA-Z0-9 ]+$")) {
 			return false;
 		}
 
 		return true;
+	}
+
+	public boolean esNumero(String nro) {
+		if (!nro.matches("^[0-9]+$")) {
+			return false;
+		}
+		
+		if(Integer.valueOf(nro) <= 0) {
+			return false;
+		}
+		return true;
+
 	}
 
 	public void altaLibro(String isbn, String titulo, String autor, String editorial, int edicion,

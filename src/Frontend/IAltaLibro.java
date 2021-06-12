@@ -17,8 +17,8 @@ import Backend.Libro;
 public class IAltaLibro extends MyFrame {
 
 	private JTextField txtIsbn;
-	private JFormattedTextField txtAnioLibro;
-	private JFormattedTextField txtEdicionLibro;
+	private JTextField txtAnioLibro;
+	private JTextField txtEdicionLibro;
 	private JTextField txtEditorialLibro;
 	private JTextField txtAutorLibro;
 	private JTextField txtTitluoLibro;
@@ -53,8 +53,8 @@ public class IAltaLibro extends MyFrame {
 		txtTitluoLibro = new JTextField("");
 		txtAutorLibro = new JTextField("");
 		txtEditorialLibro = new JTextField("");
-		txtEdicionLibro = new JFormattedTextField(formatter);
-		txtAnioLibro = new JFormattedTextField(formatter);
+		txtEdicionLibro = new JTextField("");
+		txtAnioLibro = new JTextField("");
 
 		// Disponer elementos
 		anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 5, 1, GridBagConstraints.PAGE_START,
@@ -152,13 +152,8 @@ public class IAltaLibro extends MyFrame {
 				String titulo = txtTitluoLibro.getText();
 				String autor = txtAutorLibro.getText();
 				String editorial = txtEditorialLibro.getText();
-				int edicion = 0;
-				int anioPublicacion = 0;
-
-				if ((Number) txtEdicionLibro.getValue() != null && (Number) txtAnioLibro.getValue() != null) {
-					edicion = ((Number) txtEdicionLibro.getValue()).intValue();
-					anioPublicacion = ((Number) txtAnioLibro.getValue()).intValue();
-				}
+				String edicion = txtEdicionLibro.getText();
+				String anioPublicacion = txtAnioLibro.getText();
 
 				registrar(isbn, titulo, autor, editorial, edicion, anioPublicacion);
 			}
@@ -166,8 +161,8 @@ public class IAltaLibro extends MyFrame {
 
 	}
 
-	public void registrar(String isbn, String titulo, String autor, String editorial, int edicion,
-			int anioPublicacion) {
+	public void registrar(String isbn, String titulo, String autor, String editorial, String edicion,
+			String anioPublicacion) {
 
 		// Validacion de que el ISBN sea valido
 		if (!gl.esIsbn(isbn)) {
@@ -202,7 +197,7 @@ public class IAltaLibro extends MyFrame {
 		}
 
 		// Validacion de que la edición sea valida
-		if (edicion <= 0) {
+		if (!gl.esNumero(edicion)) {
 			// Damos un mensaje de error para el usuario
 			mensajeError(Utilitario.MSJ_ERROR_EDICION);
 			// Retornamos para no realizar la operacaion
@@ -210,7 +205,7 @@ public class IAltaLibro extends MyFrame {
 		}
 
 		// Validacion de que el año sea valido
-		if (anioPublicacion <= 0) {
+		if (!gl.esNumero(anioPublicacion)) {
 			// Damos un mensaje de error para el usuario
 			mensajeError(Utilitario.MSJ_ERROR_ANIO);
 			// Retornamos para no realizar la operacaion
@@ -220,16 +215,18 @@ public class IAltaLibro extends MyFrame {
 		// Validacion de que el libro no exista previamente
 		if (gl.existeLibro(isbn)) {
 			// Damos un mensaje de error para el usuario
-			mensajeError(Utilitario.MSJ_LIBRO_EXISTE);
+			mensajeError(Utilitario.MSJ_ERROR_ISBN_DUPLICADO);
 			// Retornamos para no realizar la operacaion
 			return;
 		}
 
 		// Damos de alta el libro porque todos los campso son correcrtos
-		gl.altaLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion);
+		gl.altaLibro(isbn, titulo, autor, editorial, Integer.valueOf(edicion),
+				Integer.valueOf(anioPublicacion));
 		// Le damos un mensaje de éxito al usuario
 		mensajeExito(Utilitario.MSJ_LIBRO_REGISTRADO);
 		// Generamos una entrada en el log por si ocurre alguna falla
-		gl.registrarLog("Alta Libro: " + new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
+		gl.registrarLog("Alta Libro: " + new Libro(isbn, titulo, autor, editorial, Integer.valueOf(edicion),
+				Integer.valueOf(anioPublicacion)));
 	}
 }
