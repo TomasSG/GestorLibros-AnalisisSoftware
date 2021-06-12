@@ -55,38 +55,11 @@ public class GestorLibros implements Gestor {
 		return true;
 	}
 
-	public boolean altaLibro(String isbn, String titulo, String autor, String editorial, int edicion,
+	public void altaLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {
 
-		// Validacion de que sea un ISBN válido
-		if (!esIsbn(isbn)) {
-			// Indicamos que no se completo la operacion
-			return false;
-		}
-
-		// Validacion de que los campos de texto sean válidos
-		if (!esTexto(titulo) || !esTexto(autor) || !esTexto(editorial)) {
-			// Indicamos que no se completo la operacion
-			return false;
-		}
-
-		// Validacion de que los campos numericos sean válidos
-		if (edicion <= 0 || anioPublicacion <= 0) {
-			// Indicamos que no se completo la operacion
-			return false;
-		}
-
-		// Validacion de que no exista previamente el libro
-		if (existeLibro(isbn)) {
-			// Indicamos que no se completo la operacion
-			return false;
-		}
-
-		// Creamos el libro con los datos previamente vlidados
+		// Creamos el libro con los datos previamente validados por el que lo llama
 		this.libros.add(new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
-		
-		// Retornamos true indicando el éxito de la operacion
-		return true;
 	}
 
 	public Libro consultarLibro(String isbn) {

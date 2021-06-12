@@ -147,41 +147,89 @@ public class IAltaLibro extends MyFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				registrar();
+				// Bloque de inicialización de variables
+				String isbn = txtIsbn.getText();
+				String titulo = txtTitluoLibro.getText();
+				String autor = txtAutorLibro.getText();
+				String editorial = txtEditorialLibro.getText();
+				int edicion = 0;
+				int anioPublicacion = 0;
+
+				if ((Number) txtEdicionLibro.getValue() != null && (Number) txtAnioLibro.getValue() != null) {
+					edicion = ((Number) txtEdicionLibro.getValue()).intValue();
+					anioPublicacion = ((Number) txtAnioLibro.getValue()).intValue();
+				}
+
+				registrar(isbn, titulo, autor, editorial, edicion, anioPublicacion);
 			}
 		});
 
 	}
 
-	public void registrar() {
+	public void registrar(String isbn, String titulo, String autor, String editorial, int edicion,
+			int anioPublicacion) {
 
-		String isbn = txtIsbn.getText();
-		String titulo = txtTitluoLibro.getText();
-		String autor = txtAutorLibro.getText();
-		String editorial = txtEditorialLibro.getText();
-
-		if (esVacio(isbn) || esVacio(titulo) || esVacio(autor) || esVacio(editorial)
-				|| txtEdicionLibro.getValue() == null || txtAnioLibro.getValue() == null) {
-			mensajeError(Utilitario.MSJ_CAMPOS_VACIOS);
+		// Validacion de que el ISBN sea valido
+		if (!gl.esIsbn(isbn)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_ISBN);
+			// Retornamos para no realizar la operacaion
 			return;
 		}
-		
-		int edicion = ((Number)txtEdicionLibro.getValue()).intValue();
-		int anioPublicacion = ((Number)txtAnioLibro.getValue()).intValue();
 
+		// Validacion de que el Titulo sea valido
+		if (!gl.esTexto(titulo)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_TITULO);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// Validacion de que el Autor sea valido
+		if (!gl.esTexto(autor)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_AUTOR);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// Validacion de que la editorial sea valida
+		if (!gl.esTexto(editorial)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_EDITORIAL);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// Validacion de que la edición sea valida
+		if (edicion <= 0) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_EDICION);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// Validacion de que el año sea valido
+		if (anioPublicacion <= 0) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_ANIO);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// Validacion de que el libro no exista previamente
 		if (gl.existeLibro(isbn)) {
+			// Damos un mensaje de error para el usuario
 			mensajeError(Utilitario.MSJ_LIBRO_EXISTE);
+			// Retornamos para no realizar la operacaion
 			return;
 		}
 
-		if (gl.altaLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion)) {
-			mensajeExito(Utilitario.MSJ_LIBRO_REGISTRADO);
-			gl.registrarLog("Alta Libro: " + new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
-			return;
-		} else {
-			mensajeError(Utilitario.MSJ_LIBRO_REGISTRAR_ERROR);
-			return;
-		}
-
+		// Damos de alta el libro porque todos los campso son correcrtos
+		gl.altaLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion);
+		// Le damos un mensaje de éxito al usuario
+		mensajeExito(Utilitario.MSJ_LIBRO_REGISTRADO);
+		// Generamos una entrada en el log por si ocurre alguna falla
+		gl.registrarLog("Alta Libro: " + new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
 	}
 }

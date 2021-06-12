@@ -25,10 +25,18 @@ public class Utilitario {
 	public static final String MSJ_EXISTE_USUARIO = "Ya existe el usuario ingresado";
 	public static final String MSJ_NO_EXISTE_USUARIO = "No existe el usuario ingresado";
 	
-	public static final String MSJ_LIBRO_EXISTE = "Ya existe el ISBN introducido";
+	
 	public static final String MSJ_LIBRO_REGISTRAR_ERROR = "No se logro registrar el libro";
 	public static final String MSJ_LIBRO_ACTUALIZAR_ERROR = "No se logro actualizar el libro";
 	public static final String MSJ_LIBRO_NO_ENCONTRADO = "No se logro encontrar el libro solicitado";
+	
+	public static final String MSJ_ERROR_ISBN = "El ISBN introducido es erroneo";
+	public static final String MSJ_ERROR_TITULO = "El Titulo introducido es erroneo";
+	public static final String MSJ_ERROR_AUTOR = "El Autor introducido es erroneo";
+	public static final String MSJ_ERROR_EDITORIAL = "La Editorial introducida es erronea";
+	public static final String MSJ_ERROR_EDICION = "La Edicion introducida es erronea";
+	public static final String MSJ_ERROR_ANIO = "El Año introducido es erroneo";
+	public static final String MSJ_LIBRO_EXISTE = "Ya existe el ISBN introducido";
 	
 	// Msjs de éxito
 	public static final String MSJ_USUARIO_REGISTRADO = "Usuario registrado exitosamente!";
