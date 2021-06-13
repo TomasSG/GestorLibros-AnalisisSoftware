@@ -197,7 +197,7 @@ public class IAltaLibro extends MyFrame {
 		}
 
 		// Validacion de que la edición sea valida
-		if (!gl.esNumero(edicion)) {
+		if (!gl.esEdicion(edicion)) {
 			// Damos un mensaje de error para el usuario
 			mensajeError(Utilitario.MSJ_ERROR_EDICION);
 			// Retornamos para no realizar la operacaion
@@ -205,7 +205,7 @@ public class IAltaLibro extends MyFrame {
 		}
 
 		// Validacion de que el año sea valido
-		if (!gl.esNumero(anioPublicacion)) {
+		if (!gl.esAnioPublicacion(anioPublicacion)) {
 			// Damos un mensaje de error para el usuario
 			mensajeError(Utilitario.MSJ_ERROR_ANIO);
 			// Retornamos para no realizar la operacaion
@@ -226,7 +226,6 @@ public class IAltaLibro extends MyFrame {
 		// Le damos un mensaje de éxito al usuario
 		mensajeExito(Utilitario.MSJ_LIBRO_REGISTRADO);
 		// Generamos una entrada en el log por si ocurre alguna falla
-		gl.registrarLog("Alta Libro: " + new Libro(isbn, titulo, autor, editorial, Integer.valueOf(edicion),
-				Integer.valueOf(anioPublicacion)));
+		gl.registrarLog("Alta Libro: " + new Libro(isbn, titulo, autor, editorial, Integer.valueOf(edicion), Integer.valueOf(anioPublicacion)));
 	}
 }

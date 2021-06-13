@@ -55,7 +55,7 @@ public class GestorLibros implements Gestor {
 		return true;
 	}
 
-	public boolean esNumero(String nro) {
+	private boolean esNumeroPositivo(String nro) {
 		if (!nro.matches("^[0-9]+$")) {
 			return false;
 		}
@@ -65,6 +65,24 @@ public class GestorLibros implements Gestor {
 		}
 		return true;
 
+	}
+	
+	public boolean esEdicion(String edicion) {
+		return esNumeroPositivo(edicion);
+	}
+	
+	public boolean esAnioPublicacion(String anioPublicacion) {
+		if(!esNumeroPositivo(anioPublicacion)) {
+			return false;
+		}
+		
+		int valor = Integer.valueOf(anioPublicacion);
+		
+		if(valor < 1000 || valor > 9999) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	public void altaLibro(String isbn, String titulo, String autor, String editorial, int edicion,

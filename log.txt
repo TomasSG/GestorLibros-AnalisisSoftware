@@ -26,3 +26,5 @@
 [2021-06-12 19:01:10] Inicio Sesión de 1
 [2021-06-12 19:01:39] Inicio Sesión de 1
 [2021-06-12 19:01:56] Alta Libro: Libro [isbn=123-12-12345-12-1, titulo=a a, autor=a, editorial=2, edicion=2, anioPublicacion=2]
+[2021-06-13 10:36:12] Inicio Sesión de 1
+[2021-06-13 10:37:11] Alta Libro: Libro [isbn=123-12-12345-12-6, titulo=a, autor=a, editorial=a, edicion=1, anioPublicacion=1000]
