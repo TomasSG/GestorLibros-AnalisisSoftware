@@ -28,3 +28,11 @@
 [2021-06-12 19:01:56] Alta Libro: Libro [isbn=123-12-12345-12-1, titulo=a a, autor=a, editorial=2, edicion=2, anioPublicacion=2]
 [2021-06-13 10:36:12] Inicio Sesión de 1
 [2021-06-13 10:37:11] Alta Libro: Libro [isbn=123-12-12345-12-6, titulo=a, autor=a, editorial=a, edicion=1, anioPublicacion=1000]
+[2021-06-13 20:19:29] Inicio Sesión de 1
+[2021-06-13 20:19:48] Alta Libro: Libro [isbn=978-92-95055-02-5, titulo=A, autor=A, editorial=A, edicion=1, anioPublicacion=1000]
+[2021-06-13 20:23:59] Alta Libro: Libro [isbn=978-92-95055-12-5, titulo=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, autor=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, editorial= aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, edicion=1, anioPublicacion=9999]
+[2021-06-14 19:28:54] Inicio Sesión de 1
+[2021-06-14 19:54:44] Inicio Sesión de 1
+[2021-06-14 20:01:55] Inicio Sesión de 1
+[2021-06-14 20:02:18] Libros ordenados
+[2021-06-14 20:08:37] Inicio Sesión de 1

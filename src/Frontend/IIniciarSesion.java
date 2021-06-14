@@ -46,7 +46,6 @@ public class IIniciarSesion extends MyFrame {
 		try {
 			gu.iniciar();
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -94,7 +93,9 @@ public class IIniciarSesion extends MyFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				iniciarSesion();
+				String nombre = txtNombreUsuario.getText();
+				String contraseniaHash = String.valueOf(txtContrasenia.getPassword());
+				iniciarSesion(nombre, contraseniaHash);
 			}
 		});
 
@@ -118,36 +119,36 @@ public class IIniciarSesion extends MyFrame {
 		});
 	}
 
-	public void iniciarSesion() {
+	public void iniciarSesion(String nombre, String contraseniaHash) {
 
-		String nombre = txtNombreUsuario.getText();
-		String contraseniaHash = String.valueOf(txtContrasenia.getPassword());
-
-		// Validaciones sobre los campos de entrada
-		if (!esContraseniaCorrecto(contraseniaHash)) {
-			mensajeError(Utilitario.MSJ_CONTRASENIA_INVALIDA);
+		// Validacion que la contraseña es correcta
+		if (!gu.esContrasenia(contraseniaHash)) {
+			mensajeError(Utilitario.MSJ_ERROR_CONTRASENIA_INVALIDA);
 			return;
 		}
-
-		if (!esNombreCorrecto(txtNombreUsuario.getText())) {
-			mensajeError(Utilitario.MSJ_NOMBRE_INVALIDO);
+		
+		// Validación de que el nombre es válido
+		if (!gu.esNombre(nombre)) {
+			mensajeError(Utilitario.MSJ_ERROR_NOMBRE_INVALIDO);
 			return;
 		}
 
 		// Validamos de que exista el usuario
 		if (!gu.existeUsuario(nombre)) {
-			mensajeError(Utilitario.MSJ_NO_EXISTE_USUARIO);
+			mensajeError(Utilitario.MSJ_ERROR_NO_EXISTE_USUARIO);
 			return;
 		}
 
 		// Validamos que las contrasenia coinciden
 		if (!gu.verificarContrasenia(nombre, contraseniaHash)) {
-			mensajeError(Utilitario.MSJ_CONTRASENIA_ERRONEA);
+			mensajeError(Utilitario.MSJ_ERROR_CONTRASENIA_ERRONEA);
 			return;
 		}
 		
+		// Registramos en el log
 		gu.registrarLog("Inicio Sesión de " + nombre);
 
+		// Pasamos a la próxima ventana
 		IMenu pantallaMenu = new IMenu();
 		pantallaMenu.setLocationRelativeTo(null);
 		pantallaMenu.setVisible(true);

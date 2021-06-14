@@ -11,23 +11,14 @@ public class Utilitario {
 	public static final String TITULO_REALIZAR_OPERACION = "Confirmación Operación";
 	
 	// Msj de errores
-	public static final String MSJ_ERROR_BD = "No se logro acceder a la base datos";
+	public static final String MSJ_ERROR_CONTRASENIA_INVALIDA = "Contraseña Inválida";
+	public static final String MSJ_ERROR_NO_COINCIDEN_CONTRASENIAS = "No coinciden las contraseñas ingresadas";
+	public static final String MSJ_ERROR_CONTRASENIA_ERRONEA = "Contraseña erronea";
+	public static final String MSJ_ERROR_NOMBRE_INVALIDO = "Nombre de usuario Inválido";
+	public static final String MSJ_ERROR_EXISTE_USUARIO = "Ya existe el usuario ingresado";
+	public static final String MSJ_ERROR_NO_EXISTE_USUARIO = "No existe el usuario ingresado";
 	
-	public static final String MSJ_CERRAR_VENTANA = "¿Deseas cerrar la ventana?";
-	
-	public static final String MSJ_CAMPOS_VACIOS = "Todos los campos deben estar completos";
-	public static final String MSJ_LISTA_VACIA = "Parece que no hay registros aún";
-	
-	public static final String MSJ_CONTRASENIA_INVALIDA = "Contraseña Inválida";
-	public static final String MSJ_NO_COINCIDEN_CONTRASENIAS = "No coinciden las contraseñas ingresadas";
-	public static final String MSJ_CONTRASENIA_ERRONEA = "Contraseña erronea";
-	public static final String MSJ_NOMBRE_INVALIDO = "Nombre de usuario Inválido";
-	public static final String MSJ_EXISTE_USUARIO = "Ya existe el usuario ingresado";
-	public static final String MSJ_NO_EXISTE_USUARIO = "No existe el usuario ingresado";
-	
-	public static final String MSJ_LIBRO_ACTUALIZAR_ERROR = "No se logro actualizar el libro";
-	public static final String MSJ_LIBRO_NO_ENCONTRADO = "No se logro encontrar el libro solicitado";
-	
+	public static final String MSJ_ERROR_LISTA_LIBROS_VACIA = "Parece que no hay registros aún";
 	public static final String MSJ_ERROR_ISBN = "El ISBN introducido es erróneo";
 	public static final String MSJ_ERROR_ISBN_DUPLICADO = "Ya existe el ISBN introducido";
 	public static final String MSJ_ERROR_TITULO = "El título introducido es erróneo";
@@ -47,6 +38,7 @@ public class Utilitario {
 	
 	// Msjs confirmación
 	public static final String MSJ_REALIZAR_OPERACION = "¿Estás seguro que deseas realizar la operación?";
+	public static final String MSJ_CERRAR_VENTANA = "¿Deseas cerrar la ventana?";
 	
 	// Fonts
 	public static final Font FONT_TITULOS = new Font("Arial", Font.BOLD, 24);

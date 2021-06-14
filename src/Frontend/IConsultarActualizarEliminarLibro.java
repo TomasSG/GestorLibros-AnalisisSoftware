@@ -25,8 +25,8 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 	private JFrame padre;
 
 	private JComboBox<String> comboIsbn;
-	private JFormattedTextField txtAnioLibro;
-	private JFormattedTextField txtEdicionLibro;
+	private JTextField txtAnioLibro;
+	private JTextField txtEdicionLibro;
 	private JTextField txtEditorialLibro;
 	private JTextField txtAutorLibro;
 	private JTextField txtTitluoLibro;
@@ -36,11 +36,6 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 
 		this.gl = gl;
 		this.padre = padre;
-
-		// Para solo aceptar nros como input
-		MyNumberFormatter formatter = new MyNumberFormatter(NumberFormat.getIntegerInstance());
-		formatter.setValueClass(Long.class);
-		formatter.setAllowsInvalid(false);
 
 		// Elementos
 		MyLabel lblTitulo = new MyLabel(":-: CONSULTAR/ACTUALIZAR/ELIMINAR LIBRO :-:", Utilitario.FONT_TITULOS);
@@ -62,8 +57,8 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 		txtTitluoLibro = new JTextField("");
 		txtAutorLibro = new JTextField("");
 		txtEditorialLibro = new JTextField("");
-		txtEdicionLibro = new JFormattedTextField(formatter);
-		txtAnioLibro = new JFormattedTextField(formatter);
+		txtEdicionLibro = new JTextField("");
+		txtAnioLibro = new JTextField("");
 
 		// Disponer elementos
 		anadirObjeto(lblTitulo, contentPane, layout, gbc, 0, 0, 7, 1, GridBagConstraints.PAGE_START,
@@ -173,7 +168,13 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				actualizarLibro();
+				String isbn = comboIsbn.getSelectedItem().toString();
+				String titulo = txtTitluoLibro.getText();
+				String autor = txtAutorLibro.getText();
+				String editorial = txtEditorialLibro.getText();
+				String edicion = txtEdicionLibro.getText();
+				String anio = txtAnioLibro.getText();
+				actualizarLibro(isbn, titulo, autor, editorial, edicion, anio);
 			}
 		});
 
@@ -181,76 +182,115 @@ public class IConsultarActualizarEliminarLibro extends MyFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				eliminarLibro();
-
+				eliminarLibro(comboIsbn.getSelectedItem().toString());
 			}
 		});
 
 		consultarLibro(comboIsbn.getItemAt(0).toString());
 	}
 
-	protected void eliminarLibro() {
-		
-		if(mensajeRealizarOperacion() == JOptionPane.NO_OPTION) {
+	protected void eliminarLibro(String isbn) {
+
+		// Pedimos una confirmación por parte del usuario
+		if (mensajeRealizarOperacion() == JOptionPane.NO_OPTION) {
 			return;
 		}
 		
-		gl.eliminarLibro(comboIsbn.getSelectedItem().toString());
-		gl.registrarLog("Libro Eliminado: " + comboIsbn.getSelectedItem().toString());
+		// Lo eleminamos de los registros
+		gl.eliminarLibro(isbn);
+		
+		// Registramos en el log
+		gl.registrarLog("Libro Eliminado: " + isbn);
+		
+		// Mostramos un msj de éxito
 		mensajeExito(Utilitario.MSJ_LIBRO_BORRADO);
+		
+		// Volvemos a la pantalla previa
 		volver(padre);
 	}
 
-	protected void actualizarLibro() {
-		String isbn = comboIsbn.getSelectedItem().toString();
-		String titulo = txtTitluoLibro.getText();
-		String autor = txtAutorLibro.getText();
-		String editorial = txtEditorialLibro.getText();
+	protected void actualizarLibro(String isbn, String titulo, String autor, String editorial, String edicion,
+			String anioPublicacion) {
 
-		if (esVacio(titulo) || esVacio(autor) || esVacio(editorial) || txtEdicionLibro.getValue() == null
-				|| txtAnioLibro.getValue() == null) {
-			mensajeError(Utilitario.MSJ_CAMPOS_VACIOS);
+		// Validacion de que el Titulo sea valido
+		if (!gl.esTexto(titulo)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_TITULO);
+			// Retornamos para no realizar la operacaion
 			return;
 		}
 
-		int edicion = ((Number) txtEdicionLibro.getValue()).intValue();
-		int anioPublicacion = ((Number) txtAnioLibro.getValue()).intValue();
-
-		if (gl.actualizarLibro(isbn, titulo, autor, editorial, edicion, anioPublicacion)) {
-			mensajeExito(Utilitario.MSJ_LIBRO_ACTUALIZADO);
-			gl.registrarLog("Libro Actualizado: " + new Libro(isbn, titulo, autor, editorial, edicion, anioPublicacion));
-			volver(padre);
-		} else {
-			mensajeError(Utilitario.MSJ_LIBRO_ACTUALIZAR_ERROR);
+		// Validacion de que el Autor sea valido
+		if (!gl.esTexto(autor)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_AUTOR);
+			// Retornamos para no realizar la operacaion
+			return;
 		}
+
+		// Validacion de que la editorial sea valida
+		if (!gl.esTexto(editorial)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_EDITORIAL);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// Validacion de que la edición sea valida
+		if (!gl.esEdicion(edicion)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_EDICION);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// Validacion de que el año sea valido
+		if (!gl.esAnioPublicacion(anioPublicacion)) {
+			// Damos un mensaje de error para el usuario
+			mensajeError(Utilitario.MSJ_ERROR_ANIO);
+			// Retornamos para no realizar la operacaion
+			return;
+		}
+
+		// No validamos que exista el libro porque el ISBN es elegido dentro de la lista
+		
+		// Actualizamos el libro
+		gl.actualizarLibro(isbn, titulo, autor, editorial, Integer.valueOf(edicion), Integer.valueOf(anioPublicacion));
+
+		// Mostramos un mensaje de exito al autor
+		mensajeExito(Utilitario.MSJ_LIBRO_ACTUALIZADO);
+		
+		// Registramos en el log
+		gl.registrarLog("Libro Actualizado: " + new Libro(isbn, titulo, autor, editorial, Integer.valueOf(edicion),
+				Integer.valueOf(anioPublicacion)));
+		
+		// Volvemos a la pantalla previa
+		volver(padre);
 	}
 
 	protected void consultarLibro(String isbn) {
+		
+		// Como el ISBN se carga de un combobox no es posible que no exista el libro previamente
 		Libro libro = gl.consultarLibro(isbn);
 
-		if (libro == null) {
-			mensajeError(Utilitario.MSJ_LIBRO_NO_ENCONTRADO);
-			return;
-		}
-
-		establecerCampos(libro.getTitulo(), libro.getAutor(), libro.getEditorial(), libro.getEdicion(),
-				libro.getAnioPublicacion());
-
+		// Rellenamos los campos con los datos del libro
+		establecerCampos(libro.getTitulo(), libro.getAutor(), libro.getEditorial(), String.valueOf(libro.getEdicion()),
+				String.valueOf(libro.getAnioPublicacion()));
 	}
 
-	private void establecerCampos(String titulo, String autor, String editorial, int edicion, int anioPublicacion) {
+	private void establecerCampos(String titulo, String autor, String editorial, String edicion, String anioPublicacion) {
 		txtTitluoLibro.setText(titulo);
 		txtAutorLibro.setText(autor);
 		txtEditorialLibro.setText(editorial);
-		txtEdicionLibro.setValue(edicion);
-		txtAnioLibro.setValue(anioPublicacion);
+		txtEdicionLibro.setText(edicion);
+		txtAnioLibro.setText(anioPublicacion);
 	}
 
 	private void llenarCombo() {
 		Vector<Libro> libros = gl.listarLibros();
 
 		if (libros.isEmpty()) {
-			mensajeError(Utilitario.MSJ_LISTA_VACIA);
+			mensajeError(Utilitario.MSJ_ERROR_LISTA_LIBROS_VACIA);
 			return;
 		}
 

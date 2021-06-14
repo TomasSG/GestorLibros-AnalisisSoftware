@@ -59,29 +59,29 @@ public class GestorLibros implements Gestor {
 		if (!nro.matches("^[0-9]+$")) {
 			return false;
 		}
-		
-		if(Integer.valueOf(nro) <= 0) {
+
+		if (Integer.valueOf(nro) <= 0) {
 			return false;
 		}
 		return true;
 
 	}
-	
+
 	public boolean esEdicion(String edicion) {
 		return esNumeroPositivo(edicion);
 	}
-	
+
 	public boolean esAnioPublicacion(String anioPublicacion) {
-		if(!esNumeroPositivo(anioPublicacion)) {
+		if (!esNumeroPositivo(anioPublicacion)) {
 			return false;
 		}
-		
+
 		int valor = Integer.valueOf(anioPublicacion);
-		
-		if(valor < 1000 || valor > 9999) {
+
+		if (valor < 1000 || valor > 9999) {
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -93,21 +93,18 @@ public class GestorLibros implements Gestor {
 	}
 
 	public Libro consultarLibro(String isbn) {
+		
+		// Validamos de que exista el libro previamente
 		if (!existeLibro(isbn)) {
 			return null;
 		}
+		
 		return this.libros.get(this.libros.indexOf(new Libro(isbn)));
-
 	}
 
-	public boolean actualizarLibro(String isbn, String titulo, String autor, String editorial, int edicion,
+	public void actualizarLibro(String isbn, String titulo, String autor, String editorial, int edicion,
 			int anioPublicacion) {
-
-		// Verificamos la existencia
-		if (!existeLibro(isbn)) {
-			return false;
-		}
-
+		
 		Libro libro = libros.get(libros.indexOf(new Libro(isbn)));
 
 		// Como existe el libro volcamos los datos en un nuevo objeto
@@ -116,8 +113,6 @@ public class GestorLibros implements Gestor {
 		libro.setEditorial(editorial);
 		libro.setEdicion(edicion);
 		libro.setAnioPublicacion(anioPublicacion);
-
-		return true;
 	}
 
 	public void eliminarLibro(String isbn) {

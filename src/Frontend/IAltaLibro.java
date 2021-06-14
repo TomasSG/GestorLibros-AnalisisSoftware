@@ -5,10 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.text.NumberFormat;
-
 import javax.swing.Box;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import Backend.GestorLibros;
@@ -30,11 +27,6 @@ public class IAltaLibro extends MyFrame {
 		super(Utilitario.ANCHO_LIBROS, Utilitario.LARGO_LIBROS);
 
 		this.gl = gl;
-
-		// Para solo aceptar nros como input
-		MyNumberFormatter formatter = new MyNumberFormatter(NumberFormat.getIntegerInstance());
-		formatter.setValueClass(Long.class);
-		formatter.setAllowsInvalid(false);
 
 		// Elementos
 		MyLabel lblTitulo = new MyLabel(":-: ALTA LIBRO :-:", Utilitario.FONT_TITULOS);

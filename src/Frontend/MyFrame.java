@@ -81,23 +81,10 @@ public class MyFrame extends JFrame {
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	protected boolean esNombreCorrecto(String nombre) {
-		return !nombre.trim().equals("") && nombre.trim().length() < 25;
-	}
-
-	protected boolean esContraseniaCorrecto(String contrasenia) {
-		return contrasenia.length() > 0;
-	}
-	
-	protected boolean esVacio(String cadena) {
-		return cadena.trim().isEmpty();
-	}
-
 	protected void cerrarVentana(Window w, Gestor g) {
 		try {
 			g.finalizar();	
 		} catch (IOException e) {
-			mensajeError(Utilitario.MSJ_ERROR_BD);
 			w.dispose();
 		}
 		w.dispose();

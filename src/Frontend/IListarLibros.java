@@ -85,7 +85,7 @@ public class IListarLibros extends MyFrame {
 		modeloTabla.setColumnIdentifiers(Utilitario.CAMPOS_LIBROS);
 
 		if (libros.isEmpty()) {
-			mensajeError(Utilitario.MSJ_LISTA_VACIA);
+			mensajeError(Utilitario.MSJ_ERROR_LISTA_LIBROS_VACIA);
 			return;
 		}
 

@@ -23,12 +23,19 @@ Aqui encontramos 5 opciones:
 |-------------------------------------------------------------|
 
 Los campos que se asocian con cada libro son:
-* ISBN: debe contener tres guiones (-).
-* Titulo: debe contener entre 1 y 20 caracteres.
-* Autor: debe contener entre 1 y 20 caracteres.
-* Editorial: debe contener entre 1 y 20 caracteres.
-* Edicion: numero entero positivo.
-* Anio Publicacion: numero entero positivo.
+ISBN:
+	Solo se permiten guiones (-) y dígitos (0-9).
+	Debe contener 4 guiones en total.
+	El primer grupo de números debe contener 3 caracteres.
+	El segundo grupo de números debe contener 2 caracteres.
+	El tercer grupo de números debe contener 5 caracteres.
+	El cuarto grupo de números debe contener 2 caracteres.
+	El quinto grupo de números debe contener 1 carácter.
+Título: Alfanumérico de hasta 50 caracteres de longitud.
+Autor: Alfanumérico de hasta 50 caracteres de longitud.
+Editorial: Alfanumérico de hasta 50 caracteres de longitud.
+Edición: Número entero positivo.
+Año Publicación: Número entero positivo entre 1000 y 9999.
 
 |-------------------------------------------------------------|
      PRIVACIDAD DATOS DE USUARIO 

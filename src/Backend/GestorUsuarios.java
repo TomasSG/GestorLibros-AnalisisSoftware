@@ -49,16 +49,16 @@ public class GestorUsuarios implements Gestor{
 		return true;
 	}
 
-	public boolean registrarUsuario(Usuario usuario) {		
-		// Se verifica la existencia del usuario
-		if (existeUsuario(usuario)) {
-			// Como existe se retorna falso
-			return false;
-		}
-		// Si no existe se lo añade a la lsita
+	public boolean esNombre(String nombre) {
+		return !nombre.trim().equals("") && nombre.trim().length() < 25;
+	}
+
+	public boolean esContrasenia(String contrasenia) {
+		return contrasenia.length() > 0;
+	}
+	
+	public void registrarUsuario(Usuario usuario) {		
 		usuarios.add(usuario);
-		// Se retorna true porque se completo la operación
-		return true;
 	}
 	
 	public boolean verificarContrasenia(String nombre, String contraseniaPlana) {
